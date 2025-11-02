@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.active {
+  border-bottom: 2px solid #007456;
+}
+nav .active {
+  border-bottom: 2px solid #D1D5DB;
+  /* background-color: #1b9373; */
+}
+
+.bg-clr1 {
+    background-color: #007456;
+}
+.bg-clr2 {
+    background-color: #003D20;
+}
+.bg-clr3 {
+  background-color: #b2cdc6;
+}
+.text-clr1 {
+    color: #007456;
+}
+
+/* shine animation */
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shine1 {
+  background: linear-gradient(110deg, #FFFF 45%, #068463 55%, #FFFF);
+  background-size: 200% 100%;
+  animation: shine 5s linear infinite;
+}
