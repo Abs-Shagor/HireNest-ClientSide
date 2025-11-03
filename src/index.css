@@ -21,6 +21,21 @@ nav .active {
 .text-clr1 {
     color: #007456;
 }
+.text-clr2 {
+    color: #48928e;
+}
+.text-clr3 {
+    color: #003D20;
+}
+
+.shadow1 {
+  box-shadow: 0 1px 5px #007456;
+}
+/* #89aea4 */
+.shadow2 {
+  box-shadow: 0 1px 10px #a4d6c8;
+}
+
 
 /* shine animation */
 @keyframes shine {

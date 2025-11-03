@@ -20,7 +20,7 @@ const ContactUs = () => {
     return (
         <div className="max-w-[1282px] mx-auto px-2 mt-20 flex flex-col md:flex-row gap-10">
 
-            <div className='flex-1 shadow-[0_1px_5px_#007456] rounded-2xl'>
+            <div className='flex-1 border border-[#93c0b4] sm:border-white shadow1 rounded-2xl'>
                 <h3 className=' text-[24px] text-[#007456] text-center sm:text-start font-semibold px-5 pt-5 pb-2'>FEEDBACK</h3>
                 <hr className="text-[#93c0b4]" />
                 <form onSubmit={handleSubmit} className="grid gap-2 p-5">
@@ -34,13 +34,13 @@ const ContactUs = () => {
                 </form>
             </div>
 
-            <div className=' md:max-w-[350px] lg:max-w-[400px] grid gap-5 shadow-[0_1px_5px_#007456] p-5 rounded-2xl'>
+            <div className=' md:max-w-[350px] lg:max-w-[400px] grid gap-5 border-[#93c0b4] sm:border-white shadow1 p-5 rounded-2xl'>
                 <div>
                     <div className="flex items-center gap-1 mb-2">
                         <img src="../../public/HN202.png" alt="" className='w-8' />
                         <h3 className=' text-[24px] text-[#003D20] font-semibold'>HireNest</h3>
                     </div>
-                    <p className='  text-[#48928e] text-justify max-w-[400px]  '>Find your dream job or the perfect candidate easily with Hirenest — fast, simple, and reliable.</p>
+                    <p className='  text-clr2 text-justify max-w-[400px]  '>Find your dream job or the perfect candidate easily with Hirenest — fast, simple, and reliable.</p>
                 </div>
                 {/* Social media */}
                 <div className="flex items-center gap-3 my-3 ">
@@ -63,15 +63,15 @@ const ContactUs = () => {
                     <div className="grid gap-2">
                         <div className="flex items-center gap-2">
                             <FaPhoneAlt className="w-4 h-4 text-[#007456]" />
-                            <p className=" text-[#48928e] ">+880 1879097422</p>
+                            <p className=" text-clr2 ">+880 1879097422</p>
                         </div>
                         <div className="flex items-center gap-2">
                             <MdEmail className="w-4 h-4 text-[#007456]" />
-                            <p className=" text-[#48928e]">siddik56u@gmail.com</p>
+                            <p className=" text-clr2">siddik56u@gmail.com</p>
                         </div>
                         <div className="flex items-center gap-2">
                             <FaLocationDot className="w-4 h-4 text-[#007456]" />
-                            <p className=" text-[#48928e]">Chittagong, Bangladesh</p>
+                            <p className=" text-clr2">Chittagong, Bangladesh</p>
                         </div>
                     </div>
                 </div>

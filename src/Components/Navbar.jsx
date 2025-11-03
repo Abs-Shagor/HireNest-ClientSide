@@ -9,7 +9,7 @@ const Navbar = () => {
     }
     return (
         <div className='sticky top-0 z-1000 '>
-            <div className=' bg-white/50 backdrop-blur-2xl shadow-md py-3'  >
+            <div className=' bg-white/50 backdrop-blur-2xl shadow2 py-3'  >
                 <div className='flex justify-between items-center max-w-[1282px] mx-auto px-2  '>
                     <div className='flex gap-1 items-center '>
                         <div onClick={hamburger} className='md:hidden' >

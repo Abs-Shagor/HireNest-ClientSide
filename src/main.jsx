@@ -9,11 +9,13 @@ import GovtJob from './Components/GovtJob';
 import PrivateJob from './Components/PrivateJob';
 import ContactUs from './Components/ContactUs';
 import { ToastContainer } from 'react-toastify';
+import ErrorPage from './Components/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
