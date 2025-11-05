@@ -10,6 +10,7 @@ import PrivateJob from './Components/PrivateJob';
 import ContactUs from './Components/ContactUs';
 import { ToastContainer } from 'react-toastify';
 import ErrorPage from './Components/ErrorPage';
+import DataProvider from './Providers/DataProvider';
 
 const router = createBrowserRouter([
   {
@@ -39,9 +40,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}>
-      
-    </RouterProvider>
-    <ToastContainer></ToastContainer>
+    <DataProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </DataProvider>
+    <ToastContainer />
   </StrictMode>,
 )
