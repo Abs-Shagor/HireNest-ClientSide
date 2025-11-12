@@ -17,6 +17,11 @@ const ContactUs = () => {
         }
     }, [state.succeeded]);
 
+    // To show the upperside of the page we use the below method
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
+
     return (
         <div className="max-w-[1282px] mx-auto px-2 mt-20 flex flex-col md:flex-row gap-10">
 
@@ -45,16 +50,16 @@ const ContactUs = () => {
                 {/* Social media */}
                 <div className="flex items-center gap-3 my-3 ">
                     <a href='https://www.linkedin.com/in/mohammad-abu-bakkar-siddik-829451295/' target="_blank" >
-                        <FaLinkedin className="w-6 h-6 text-[#007456]" />
+                        <FaLinkedin className="w-6 h-6 text-[#007456] transform transition-transform duration-500 ease-in-out hover:scale-110" />
                     </a>
                     <a href='https://www.facebook.com/absShagor99' target="_blank" >
-                        <FaFacebook className="w-6 h-6 text-[#007456]" />
+                        <FaFacebook className="w-6 h-6 text-[#007456] transform transition-transform duration-500 ease-in-out hover:scale-110" />
                     </a>
                     <a href='' target="_blank"  >
-                        <RiInstagramFill className="w-6 h-6 text-[#007456]" />
+                        <RiInstagramFill className="w-6 h-6 text-[#007456] transform transition-transform duration-500 ease-in-out hover:scale-110" />
                     </a>
                     <a href='https://x.com/abs_shagor?s=21' target="_blank" >
-                        <FaXTwitter className="w-6 h-6 text-[#007456]" />
+                        <FaXTwitter className="w-6 h-6 text-[#007456] transform transition-transform duration-500 ease-in-out hover:scale-110" />
                     </a>
 
                 </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const GovtJob = () => {
+const AllJob = () => {
     return (
         <div>
-            Govt. Job...
+            All job is coming..
         </div>
     );
 };
 
-export default GovtJob;
+export default AllJob;

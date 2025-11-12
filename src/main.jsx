@@ -11,6 +11,10 @@ import ContactUs from './Components/ContactUs';
 import { ToastContainer } from 'react-toastify';
 import ErrorPage from './Components/ErrorPage';
 import DataProvider from './Providers/DataProvider';
+import BookDetails from './Components/BookDetails';
+import Books from './Components/Books';
+import AllJob from './Components/AllJob';
+import PostJob from './Components/PostJob';
 
 const router = createBrowserRouter([
   {
@@ -19,20 +23,38 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        index: true,
-        element: <Home></Home>
-      },
-      {
-        path: '/govtJob',
-        element: <GovtJob></GovtJob>
-      },
-      {
-        path: '/privateJob',
-        element: <PrivateJob></PrivateJob>
+        path: '/',
+        element: <Home></Home>,
+        children: [
+          {
+            index: true,
+            element: <AllJob></AllJob>
+          },
+          {
+            path: '/govtJob',
+            element: <GovtJob></GovtJob>
+          },
+          {
+            path: '/privateJob',
+            element: <PrivateJob></PrivateJob>
+          },
+        ]
       },
       {
         path: '/contactUs',
         element: <ContactUs></ContactUs>
+      },
+      {
+        path: '/bookDetails/:bookId',
+        element: <BookDetails></BookDetails>,
+      },
+      {
+        path: '/books',
+        element: <Books></Books>
+      },
+      {
+        path: '/post',
+        element: <PostJob></PostJob>
       }
     ]
   }

@@ -1,16 +1,19 @@
 import Marquee from "react-fast-marquee";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowAltCircleRight } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import { FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { RiInstagramFill } from "react-icons/ri";
 import { useContext } from "react";
 import { DataContext } from "../Providers/DataProvider";
+import { Link, Outlet } from "react-router-dom";
 
 const Home = () => {
-    const {books} = useContext(DataContext);
+    const { books } = useContext(DataContext);
 
     function handleSubscribe() {
         toast.warning('This feature is under development.');
@@ -40,12 +43,12 @@ const Home = () => {
                     <FaArrowCircleRight className="absolute right-2 top-1/2 -translate-y-1/2 text-[#007456] hover:text-[#003D20] cursor-pointer w-7 h-7 " />
                 </div>
                 <div className="max-w-[400px] mx-auto flex flex-wrap justify-center  gap-2 mt-3">
-                    <span className="bg-[#fbfdfd] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">web developer</span>
-                    <span className="bg-[#fbfdfd] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Designer</span>
-                    <span className="bg-[#fbfdfd] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">project manager</span>
-                    <span className="bg-[#fbfdfd] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">UI/UX</span>
-                    <span className="bg-[#fbfdfd] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">SQA</span>
-                    <span className="bg-[#fbfdfd] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Ai engineer</span>
+                    <span className="bg-[#fbfdfd] text-[#003D20] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">web developer</span>
+                    <span className="bg-[#fbfdfd] text-[#003D20] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Designer</span>
+                    <span className="bg-[#fbfdfd] text-[#003D20] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">project manager</span>
+                    <span className="bg-[#fbfdfd] text-[#003D20] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">UI/UX</span>
+                    <span className="bg-[#fbfdfd] text-[#003D20] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">SQA</span>
+                    <span className="bg-[#fbfdfd] text-[#003D20] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Ai engineer</span>
                 </div>
             </div>
             {/* <Marquee pauseOnHover={true} speed={50} className="text-clr3 my-10" >
@@ -118,7 +121,7 @@ const Home = () => {
                         <hr className="text-[#007456] mt-2 mb-4" />
                     </div>
 
-                    <form id="filters-form" className="join join-vertical bg-base-100 w-full ">
+                    <form id="filters-form" className="join join-vertical text-[#003D20] bg-base-100 w-full ">
                         <div className="collapse collapse-arrow join-item border-base-300 border">
                             <input type="radio" name="my-accordion-4" defaultChecked />
                             <div className="collapse-title font-semibold">Job Type</div>
@@ -251,7 +254,7 @@ const Home = () => {
 
                 {/* Middle: Jobs Post */}
                 <div className="flex-1">
-                    coming...
+                    <Outlet></Outlet>
                 </div>
 
 
@@ -287,19 +290,19 @@ const Home = () => {
                             {
                                 books.map(book => {
                                     return (
-                                        <div key={book.bookId} className='carousel-item grid max-w-[190px] w-full bg-[#F3F3F3] border border-gray-300 rounded-lg  p-5 '>
-                                            <div className='flex justify-center rounded-xl '>
-                                                <img src={book.image} alt="" className='h-[161px] w-[105px] rounded-md shadow-[0_7px_7px_gray]' />
+                                        <div key={book.bookId} className='carousel-item grid max-w-[190px] w-full bg-[#edf4f4] border border-[#93c0b4] rounded-lg  p-4 '>
+                                            <div className='flex justify-center rounded-xl'>
+                                                <img src={book.image} alt="" className='h-[140px] w-[90px] rounded-md shadow1' />
                                             </div>
                                             <div>
-                                                <h1 className='text-[24px font-semibold mt-5'  >{book.bookName}</h1>
+                                                <h1 className='text-[18px] text-[#003D20] font-semibold '  >{book.bookName}</h1>
                                                 <p className='text-[14px] font-medium text-gray-600 mt-2 '>Author: {book.author} </p>
                                                 <hr className='my-3 text-gray-300' />
                                                 <div className='flex gap-3 justify-between  items-center text-[14px]  '>
-                                                    {/* <Link to={`/showdetails/${book.bookId}`} className=" underline text-[#3B25C1]" >Show Details</Link> */}
+                                                    <Link to={`/bookDetails/${book.bookId}`} className=" underline text-[#007456] font-medium " >Show Details</Link>
                                                     <div className='flex gap-1 items-center'>
                                                         <p className=' font-medium text-gray-600'>Rating: {book.rating}</p>
-                                                        <img src="https://img.icons8.com/?size=48&id=8ggStxqyboK5&format=png" alt="" className='w-4 h-4 ' />
+                                                        <FaStar className="w-4 h-4 text-[#FFD700] " />
                                                     </div>
                                                 </div>
                                             </div>
@@ -308,15 +311,110 @@ const Home = () => {
                                 })
                             }
                         </div>
-                        {/* <div className='flex gap-1 items-center max-w-[150px] mx-auto font-semibold mt-5 mb-15'>
-                            <Link to={'/books'} className='border-b-2 '>Explore All Books</Link>
+                        <div className='flex gap-1 items-center text-[#003D20] max-w-[150px] mx-auto font-semibold mt-5 mb-15'>
+                            <Link to={'/books'} className=' border-b-2 '>Explore All Books</Link>
                             <FaArrowAltCircleRight />
-                        </div> */}
+                        </div>
                     </div>
 
                     {/* Popular in Bangladesh */}
-                    <h3 className="text-[18px] mt-10">Popular in <span className="text-[#007456] font-semibold ">Bangladesh</span></h3>
-                    <hr className="text-[#93c0b4] mt-2 mb-4" />
+                    <div className="mt-10">
+                        <h3 className="text-[18px]">Popular in <span className="text-[#007456] font-semibold ">Bangladesh</span></h3>
+                        <hr className="text-[#93c0b4] mt-2 mb-4" />
+                        <div  className="text-[#003D20] grid grid-cols-1 gap-3 " >
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/2.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">AppsCode Inc.</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/3.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">BRAC</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/1.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Appifylab</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/4.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Therap BD Ltd.</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/7.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Brain Station 23</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/8.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Craftsmen</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/5.jfif" alt="logo2" className="w-8 h-8 border border-[#93c0b4]" />
+                                <div>
+                                    <p className="font-medium">SELISE Group</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/9.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Robi Axiata PLC.</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/10.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Bybit</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/11.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Field Nation</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/12.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">foodpanda</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/13.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Arong</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <img src="../../public/company_logo/14.jfif" alt="logo2" className="w-8 h-8 " />
+                                <div>
+                                    <p className="font-medium">Bitget</p>
+                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 

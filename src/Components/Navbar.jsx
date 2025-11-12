@@ -42,7 +42,7 @@ const Navbar = () => {
                     </div>
 
                     <div className='flex items-center gap-2 lg:gap-3 ' >
-                        <Link className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-full ">Post a Job</Link>
+                        <Link to={'/post'} className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-full ">Post a Job</Link>
                         <Link className="btn btn-ghost border border-[#007456] text-[#007456] shadow-[0_1px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-full "><FiUser />Login</Link>
                     </div>
                 </div>
