@@ -35,6 +35,9 @@ nav .active {
 .shadow2 {
   box-shadow: 0 1px 10px #a4d6c8;
 }
+.shadow3 {
+  box-shadow: 0 0px 3px #a4d6c8;
+}
 
 
 /* shine animation */
@@ -52,4 +55,14 @@ nav .active {
   background: linear-gradient(110deg, #FFFF 45%, #068463 55%, #FFFF);
   background-size: 200% 100%;
   animation: shine 5s linear infinite;
+}
+
+/* Scale animation */
+.scale1 {
+  transform: scale(1);
+  transition: transform 0.5s ease-in-out;
+}
+
+.scale1:hover {
+  transform: scale(1.05);
 }

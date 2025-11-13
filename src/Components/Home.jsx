@@ -51,6 +51,7 @@ const Home = () => {
                     <span className="bg-[#fbfdfd] text-[#003D20] text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Ai engineer</span>
                 </div>
             </div>
+
             {/* <Marquee pauseOnHover={true} speed={50} className="text-clr3 my-10" >
                 <div className="flex items-center gap-1 mr-7">
                     <img src="../../public/company_logo/2.jfif" alt="logo2" className="w-5 h-5 " />
@@ -108,8 +109,7 @@ const Home = () => {
             {/* <h3 className="text-clr3 text-[24px] text-center font-semibold mt-10">Explore the latest job openning</h3> */}
 
 
-
-            <div className="flex  gap-10">
+            <div className=" flex gap-10 mt-20">
 
                 {/* Left sidebar: Filter */}
                 <div className="max-w-[300px] w-full ">
@@ -121,7 +121,7 @@ const Home = () => {
                         <hr className="text-[#007456] mt-2 mb-4" />
                     </div>
 
-                    <form id="filters-form" className="join join-vertical text-[#003D20] bg-base-100 w-full ">
+                    <form id="filters-form" className="bg-green-50 join join-vertical text-[#003D20]  w-full ">
                         <div className="collapse collapse-arrow join-item border-base-300 border">
                             <input type="radio" name="my-accordion-4" defaultChecked />
                             <div className="collapse-title font-semibold">Job Type</div>
@@ -260,7 +260,7 @@ const Home = () => {
 
                 {/* Right sidebar: Subscribe */}
                 <div className="max-w-[300px] w-full ">
-                    <button onClick={handleSubscribe} className="w-full btn btn-ghost bg-[#fbfdfd] border border-[#007456] text-[#007456] shadow-[0_0px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-md mt-2">Subscribe Now</button>
+                    <button onClick={handleSubscribe} className="w-full btn btn-ghost bg-green-50 border border-[#007456] text-[#007456] shadow-[0_0px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-md mt-2">Subscribe Now</button>
 
                     {/* Find us on */}
                     <div className='hidden md:block mt-10'>
@@ -290,9 +290,9 @@ const Home = () => {
                             {
                                 books.map(book => {
                                     return (
-                                        <div key={book.bookId} className='carousel-item grid max-w-[190px] w-full bg-[#edf4f4] border border-[#93c0b4] rounded-lg  p-4 '>
+                                        <div key={book.bookId} className='carousel-item grid max-w-[190px] w-full bg-green-50 border border-[#93c0b4] rounded-lg  p-4 '>
                                             <div className='flex justify-center rounded-xl'>
-                                                <img src={book.image} alt="" className='h-[140px] w-[90px] rounded-md shadow1' />
+                                                <img src={book.image} alt="" className='h-[140px] w-[90px] rounded-md shadow1 scale1' />
                                             </div>
                                             <div>
                                                 <h1 className='text-[18px] text-[#003D20] font-semibold '  >{book.bookName}</h1>
@@ -323,94 +323,94 @@ const Home = () => {
                         <hr className="text-[#93c0b4] mt-2 mb-4" />
                         <div  className="text-[#003D20] grid grid-cols-1 gap-3 " >
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/2.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/2.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">AppsCode Inc.</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/3.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/3.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">BRAC</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/1.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/1.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Appifylab</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/4.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/4.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Therap BD Ltd.</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/7.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/7.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Brain Station 23</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/8.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/8.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Craftsmen</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/5.jfif" alt="logo2" className="w-8 h-8 border border-[#93c0b4]" />
+                                <img src="../../public/company_logo/5.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 border border-[#93c0b4]" />
                                 <div>
                                     <p className="font-medium">SELISE Group</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/9.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/9.jfif" alt="logo2" className="w-8 h-8 scale1  " />
                                 <div>
                                     <p className="font-medium">Robi Axiata PLC.</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/10.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/10.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Bybit</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/11.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/11.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Field Nation</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/12.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/12.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">foodpanda</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/13.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/13.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Arong</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <img src="../../public/company_logo/14.jfif" alt="logo2" className="w-8 h-8 " />
+                                <img src="../../public/company_logo/14.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                                 <div>
                                     <p className="font-medium">Bitget</p>
-                                    <p className="text-[14px] text-gray-600 ">26 Jobs</p>
+                                    <p className="text-[14px] text-clr2 ">26 Jobs</p>
                                 </div>
                             </div>
                         </div>

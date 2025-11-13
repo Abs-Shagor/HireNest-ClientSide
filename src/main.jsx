@@ -15,6 +15,9 @@ import BookDetails from './Components/BookDetails';
 import Books from './Components/Books';
 import AllJob from './Components/AllJob';
 import PostJob from './Components/PostJob';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
+import AuthProvider from './Providers/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +58,14 @@ const router = createBrowserRouter([
       {
         path: '/post',
         element: <PostJob></PostJob>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/signup',
+        element: <Signup></Signup>
       }
     ]
   }
@@ -62,9 +73,11 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <DataProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </DataProvider>
+    <AuthProvider>
+      <DataProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </DataProvider>
+    </AuthProvider>
     <ToastContainer />
   </StrictMode>,
 )

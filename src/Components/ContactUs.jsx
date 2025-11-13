@@ -34,7 +34,7 @@ const ContactUs = () => {
                         <input type="email" name="email" placeholder="Email" required className="bg-[#fbfdfd] placeholder-[#769788] rounded-md outline-none border border-[#c5ded7] focus:ring-1 focus:ring-[#007456] transition p-2" />
                     </div>
                     <textarea type="text" name="message" placeholder="Description..." required className="bg-[#fbfdfd]  rounded-md placeholder-[#769788] outline-none border border-[#c5ded7] focus:ring-1 focus:ring-[#007456] transition p-2 h-[100px] resize-none"></textarea>
-                    <button className="btn btn-ghost bg-[#fbfdfd] border border-[#007456] text-[#007456] shadow-[0_0px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-md mt-2">Send Message<FaTelegramPlane size={20} />
+                    <button className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-lg mt-2">Send Message<FaTelegramPlane size={20} />
                     </button>
                 </form>
             </div>

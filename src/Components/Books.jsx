@@ -25,15 +25,15 @@ const Books = () => {
                                 books.map(book => {
                                     return (
                                         <div key={book.bookId} className='max-w-[300px] w-full border border-[#93c0b4] rounded-xl shadow-md p-5 '>
-                                            <div className='bg-[#edf4f4] p-5 flex justify-center rounded-xl '>
-                                                <img src={book.image} alt="" className='h-[200px] w-[140px] rounded-md shadow-[0_7px_7px_gray]' />
+                                            <div className='bg-green-50 p-5 flex justify-center rounded-xl '>
+                                                <img src={book.image} alt="" className='h-[200px] w-[140px] rounded-md shadow-[0_7px_7px_gray] scale1' />
                                             </div>
                                             <div>
                                                 <div className='flex gap-3 mt-3'>
                                                     {
                                                         book.tags.map(tag => {
                                                             return (
-                                                                <button key={tag} className='btn bg-[#edf4f4] text-[#007456] text-[12px] rounded-2xl '> {tag} </button>
+                                                                <button key={tag} className='btn bg-green-50 text-[#007456] text-[12px] rounded-2xl '> {tag} </button>
                                                             )
                                                         })
                                                     }

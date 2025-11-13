@@ -56,7 +56,7 @@ const PostJob = () => {
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Job Type</p>
-                            <input type="text" name="price" id="" placeholder="Enter job type" required className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="price" id="" placeholder="e.x. Full time, Part time" required className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Experience</p>
@@ -74,10 +74,22 @@ const PostJob = () => {
                             <p className="text-[#007456] mb-2">Location</p>
                             <input type="text" name="details" id="" placeholder="Enter location" required className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
-                    </div>
-                    <div>
-                        <p className="text-[#007456] mb-2">Company Logo</p>
-                        <input type="text" name="photo" id="" placeholder="Enter logo URL" required className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                        <div>
+                            <p className="text-[#007456] mb-2">Company Logo</p>
+                            <input type="text" name="photo" id="" placeholder="Enter logo URL" required className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                        </div>
+                        <div>
+                            <p className="text-[#007456] mb-2">Job Category</p>
+                            <select
+                                name="jobType"
+                                required
+                                className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition text-gray-600 p-2"
+                            >
+                                <option value="">Select</option>
+                                <option value="private">Private</option>
+                                <option value="govt">Government</option>
+                            </select>
+                        </div>
                     </div>
                     <div>
                         <p className="text-[#007456] mb-2">Description</p>
