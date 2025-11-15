@@ -18,6 +18,9 @@ import PostJob from './Components/PostJob';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import AuthProvider from './Providers/AuthProvider';
+import SignupVerificationPage from './Components/SignupVerificationPage';
+import Profile from './Components/Profile';
+import PrivateRoute1 from './Components/PrivateRoute/PrivateRoute1';
 
 const router = createBrowserRouter([
   {
@@ -66,6 +69,14 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <Signup></Signup>
+      },
+      {
+        path: '/signupVerificationPage',
+        element: <SignupVerificationPage></SignupVerificationPage>
+      },
+      {
+        path: '/profile',
+        element: <PrivateRoute1> <Profile></Profile> </PrivateRoute1>
       }
     ]
   }

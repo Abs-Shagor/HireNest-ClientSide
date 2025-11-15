@@ -56,6 +56,8 @@ const Signup = () => {
                         // set the user information in firebase to use them leter.
                         const userInfo = {
                             displayName: name,
+                            email: email,
+                            password: password,
                             photoURL: null,
                         }
                         setUserInformation(userInfo)

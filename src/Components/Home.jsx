@@ -52,7 +52,7 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* <Marquee pauseOnHover={true} speed={50} className="text-clr3 my-10" >
+            <Marquee pauseOnHover={true} speed={50} className="text-clr3 my-10" >
                 <div className="flex items-center gap-1 mr-7">
                     <img src="../../public/company_logo/2.jfif" alt="logo2" className="w-5 h-5 " />
                     <p>AppsCode Inc.</p>
@@ -105,7 +105,7 @@ const Home = () => {
                     <img src="../../public/company_logo/14.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Bitget</p>
                 </div>
-            </Marquee> */}
+            </Marquee>
             {/* <h3 className="text-clr3 text-[24px] text-center font-semibold mt-10">Explore the latest job openning</h3> */}
 
 
@@ -258,7 +258,7 @@ const Home = () => {
                 </div>
 
 
-                {/* Right sidebar: Subscribe */}
+                {/* Right sidebar */}
                 <div className="max-w-[300px] w-full ">
                     <button onClick={handleSubscribe} className="w-full btn btn-ghost bg-green-50 border border-[#007456] text-[#007456] shadow-[0_0px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-md mt-2">Subscribe Now</button>
 

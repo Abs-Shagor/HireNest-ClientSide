@@ -1,12 +1,30 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FiUser } from "react-icons/fi";
+import { AuthContext } from '../Providers/AuthProvider';
+import { toast } from 'react-toastify';
+import { FaUser } from "react-icons/fa";
+
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     function hamburger() {
         setOpen(!open);
     }
+
+    // 
+    const { user, signout } = useContext(AuthContext);
+    // console.log(user?.photoURL);
+    // to show by which method(provider: google, github, email/pass etc) the user login
+    let providerName = user?.providerData[0]?.providerId || "";
+    // console.log(providerName);
+
+    function handleLogout() {
+        signout();
+        toast.success("Logged out successfully!")
+    }
+
+
     return (
         <div className='sticky top-0 z-1000 '>
             <div className=' bg-white/50 backdrop-blur-2xl shadow2 py-3'  >
@@ -43,7 +61,32 @@ const Navbar = () => {
 
                     <div className='flex items-center gap-2 lg:gap-3 ' >
                         <Link to={'/post'} className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-full ">Post a Job</Link>
-                        <Link to={'/login'} className="btn btn-ghost border bg-green-50 border-[#007456] text-[#007456] shadow-[0_1px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-full "><FiUser />Login</Link>
+
+                        {
+                            (user && (user.emailVerified || providerName === "google.com" || providerName === 'github.com')) ?
+                                <div className="dropdown dropdown-end ">
+                                    <div tabindex="0" role="button" className='flex items-center gap-2' >
+                                        <Link to={'/'} className="text-[#003D20] font-semibold ml-2"><span>Hello, </span> {user?.displayName?.split(' ')[0]}</Link>
+                                        <div className="border border-[#007456] shadow2 rounded-full cursor-pointer p-0.5">
+                                            {
+                                                user?.photoURL ? (
+                                                    <img src={user.photoURL} alt="img" className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
+                                                ) : (
+                                                    <FaUser className='text-[#003D20] w-7 h-7 rounded-full' />
+                                                )
+                                            }
+                                        </div>
+                                    </div>
+                                    <ul tabindex="-1" className="bg-[#007456] text-white font-semibold dropdown-content menu  rounded-box z-1 w-52 p-2 shadow-sm mt-4">
+                                        <li className='hover:bg-[#47b396] rounded-md'><Link to={'/profile'}>Profile</Link></li>
+                                        <li className='hover:bg-[#47b396] rounded-md'><a>Statistics</a></li>
+                                        <li className='hover:bg-[#47b396] rounded-md'><a>Settings</a></li>
+                                        <li className='hover:bg-[#47b396] rounded-md'><Link to={'/'} onClick={handleLogout} className=" ">Logout</Link></li>
+                                    </ul>
+                                </div>
+                                :
+                                <Link to={'/login'} className="btn btn-ghost border bg-green-50 border-[#007456] text-[#007456] shadow-[0_1px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-full "><FiUser />Login</Link>
+                        }
                     </div>
                 </div>
             </div>

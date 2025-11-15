@@ -23,9 +23,9 @@ const ContactUs = () => {
     }, []);
 
     return (
-        <div className="max-w-[1282px] mx-auto px-2 mt-20 flex flex-col md:flex-row gap-10">
+        <div className="max-w-[1282px] mx-auto px-2 flex flex-col md:flex-row gap-10 mt-20 ">
 
-            <div className='flex-1 border border-[#93c0b4] sm:border-white shadow1 rounded-2xl'>
+            <div className='bg-green-50 flex-1 border border-[#93c0b4] sm:border-white shadow2 rounded-2xl'>
                 <h3 className=' text-[24px] text-[#007456] text-center sm:text-start font-semibold px-5 pt-5 pb-2'>FEEDBACK</h3>
                 <hr className="text-[#93c0b4]" />
                 <form onSubmit={handleSubmit} className="grid gap-2 p-5">
@@ -39,7 +39,7 @@ const ContactUs = () => {
                 </form>
             </div>
 
-            <div className=' md:max-w-[350px] lg:max-w-[400px] grid gap-5 border-[#93c0b4] sm:border-white shadow1 p-5 rounded-2xl'>
+            <div className='bg-green-50 md:max-w-[350px] lg:max-w-[400px] grid gap-5 border-[#93c0b4] sm:border-white shadow2 p-5 rounded-2xl'>
                 <div>
                     <div className="flex items-center gap-1 mb-2">
                         <img src="../../public/HN202.png" alt="" className='w-8' />
