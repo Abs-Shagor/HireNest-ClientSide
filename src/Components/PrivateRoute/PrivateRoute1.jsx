@@ -1,11 +1,20 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-toastify';
 
 const PrivateRoute1 = ({ children }) => {
 
     const { user, loading } = useContext(AuthContext);
+
+    const warned = useRef(false);
+    useEffect(() => {
+        if (!loading && !user && !warned.current) {
+            warned.current = true;
+            toast.warning("You must login first!");
+        }
+    }, [loading, user]);
 
     if (loading) {
         return (
@@ -14,14 +23,10 @@ const PrivateRoute1 = ({ children }) => {
             </div>
         )
     }
-    else if (user) {
-        return children;
+    if (!user) {
+        return <Navigate to="/login" />;
     }
-    else {
-        return (
-            <Navigate to={'/login'} ></Navigate>
-        )
-    }
+    return children;
 };
 
 export default PrivateRoute1;

@@ -21,6 +21,7 @@ import AuthProvider from './Providers/AuthProvider';
 import SignupVerificationPage from './Components/SignupVerificationPage';
 import Profile from './Components/Profile';
 import PrivateRoute1 from './Components/PrivateRoute/PrivateRoute1';
+import HomeUserPost from './Components/HomeUserPost';
 
 const router = createBrowserRouter([
   {
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/post',
-        element: <PostJob></PostJob>
+        element: <PrivateRoute1> <PostJob></PostJob> </PrivateRoute1>
       },
       {
         path: '/login',
@@ -77,7 +78,7 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <PrivateRoute1> <Profile></Profile> </PrivateRoute1>
-      }
+      },
     ]
   }
 ])

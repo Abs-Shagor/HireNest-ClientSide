@@ -19,7 +19,7 @@ const Profile = () => {
         Swal.fire({
             title: "",
             html: `<div style="display:flex; justify-content:center;">
-                    <img src="${user.photoURL}" referrerpolicy="no-referrer" class="h-20 w-20 rounded-full" />
+                    <img src="${user.photoURL}" referrerpolicy="no-referrer" class="h-40 w-40 rounded-full" />
                     </div>
                     `,
             showConfirmButton: true,
@@ -27,8 +27,8 @@ const Profile = () => {
     }
 
     return (
-        <div className='flex gap-15 my-20'>
-            <div className='max-w-[400px] flex flex-col gap-2 items-center  bg-green-50 border border-[#93c0b4] sm:border-white shadow2 rounded-2xl p-5'>
+        <div className='flex flex-col md:flex-row gap-5 lg:gap-10 my-10 md:my-20'>
+            <div className='max-w-[360px] md:max-w-[330px] w-full mx-auto flex flex-col gap-2 items-center  bg-green-50 border border-[#93c0b4] sm:border-white shadow2 rounded-2xl p-5'>
                 <div onClick={handleProfilePicture} className="border  border-[#007456] shadow2 rounded-full p-0.5">
                     <img src={user.photoURL} alt="img" className="w-20 h-20 rounded-full" referrerPolicy="no-referrer" />
                 </div>
@@ -55,7 +55,7 @@ const Profile = () => {
                     </div>
                     <div className='text-[#48928e] space-y-1 '>
                         <p>Online</p>
-                        <p>{user.email}</p>
+                        <p className='max-w-[190px] truncate '>{user.email}</p>
                         <p>{RegisterDate}</p>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ const Profile = () => {
                     </div>
 
                 </div>
-                <hr className="text-[#93c0b4]" />
+                {/* <hr className="text-[#93c0b4]" /> */}
                 <form className="grid gap-5 p-5">
                     <div className="grid sm:grid-cols-2 gap-5">
                         <div>
@@ -80,24 +80,24 @@ const Profile = () => {
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">UserName</p>
-                            <input type="text" name="price" id="" placeholder="username" required readOnly defaultValue={user.displayName.split(" ")[0].toLowerCase() +
+                            <input type="text" name="username" id="" placeholder="username" required readOnly defaultValue={user.displayName.split(" ")[0].toLowerCase() +
                                 Math.floor(Math.random() * 9000 + 1000)} className="w-full bg-white text-[14px] text-[#003D20]  shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Email</p>
-                            <input type="email" name="name" id="" placeholder="Enter Email" required defaultValue={user.email} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="email" name="email" id="" placeholder="Enter Email" required defaultValue={user.email} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Password</p>
-                            <input type="password" name="name" id="" placeholder="Password" required  defaultValue={user.displayName} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="password" name="password" id="" placeholder="Password" required  defaultValue={user.displayName} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Position</p>
-                            <input type="text" name="name" id="" placeholder="Enter Position" required defaultValue={'Job Seeker'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="position" id="" placeholder="Enter Position" required defaultValue={'Job Seeker'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Address</p>
-                            <input type="text" name="name" id="" placeholder="Enter Address" required defaultValue={'Chittagong, Bangladesh'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="address" id="" placeholder="Enter Address" required defaultValue={'Chittagong, Bangladesh'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
 
 

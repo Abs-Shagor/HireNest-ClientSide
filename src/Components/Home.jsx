@@ -11,9 +11,12 @@ import { RiInstagramFill } from "react-icons/ri";
 import { useContext } from "react";
 import { DataContext } from "../Providers/DataProvider";
 import { Link, Outlet } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import HomeUserPost from "./HomeUserPost";
 
 const Home = () => {
     const { books } = useContext(DataContext);
+    const {user} = useContext(AuthContext);
 
     function handleSubscribe() {
         toast.warning('This feature is under development.');
@@ -254,6 +257,8 @@ const Home = () => {
 
                 {/* Middle: Jobs Post */}
                 <div className="flex-1">
+                    <HomeUserPost></HomeUserPost>
+                    {/* All Job section */}
                     <Outlet></Outlet>
                 </div>
 

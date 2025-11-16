@@ -66,7 +66,7 @@ const Navbar = () => {
                             (user && (user.emailVerified || providerName === "google.com" || providerName === 'github.com')) ?
                                 <div className="dropdown dropdown-end ">
                                     <div tabindex="0" role="button" className='flex items-center gap-2' >
-                                        <Link to={'/'} className="text-[#003D20] font-semibold ml-2"><span>Hello, </span> {user?.displayName?.split(' ')[0]}</Link>
+                                        <Link to={'/'} className="text-[#003D20] font-semibold max-w-[150px] truncate ml-2"><span>Hello, </span > {user?.displayName?.split(' ')[0]}</Link>
                                         <div className="border border-[#007456] shadow2 rounded-full cursor-pointer p-0.5">
                                             {
                                                 user?.photoURL ? (
