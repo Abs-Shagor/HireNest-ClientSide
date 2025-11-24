@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { GrValidate } from "react-icons/gr";
 import Swal from 'sweetalert2';
+import { FaEdit } from "react-icons/fa";
 
 
 const Profile = () => {
@@ -19,7 +20,7 @@ const Profile = () => {
         Swal.fire({
             title: "",
             html: `<div style="display:flex; justify-content:center;">
-                    <img src="${user.photoURL}" referrerpolicy="no-referrer" class="h-40 w-40 rounded-full" />
+                    <img src="${user.photoURL}" referrerpolicy="no-referrer" className="h-40 w-40 rounded-full" />
                     </div>
                     `,
             showConfirmButton: true,
@@ -64,10 +65,10 @@ const Profile = () => {
             <div className='flex-1 bg-green-50 border border-[#93c0b4] sm:border-white shadow2 rounded-2xl'>
 
                 <div className='flex justify-between items-center p-5'>
-                    <h3 className=' text-[20px] text-[#003D20] font-semibold'>Edit Profile</h3>
+                    <h3 className=' text-[20px] text-[#003D20] font-semibold flex items-center gap-2'>Edit Profile<FaEdit /></h3>
                     <div className='flex gap-2 items-center'>
                         <p className='text-[14px] text-[#007456] '>Available for hire?</p>
-                        <input type="checkbox" value="synthwave" class="toggle toggle-accent" />
+                        <input type="checkbox" value="synthwave" className="toggle toggle-accent" />
                     </div>
 
                 </div>
@@ -76,28 +77,28 @@ const Profile = () => {
                     <div className="grid sm:grid-cols-2 gap-5">
                         <div>
                             <p className="text-[#007456] mb-2">Full Name</p>
-                            <input type="text" name="name" id="" placeholder="Enter name" required defaultValue={user.displayName} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="name"  placeholder="Enter name" required defaultValue={user.displayName} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">UserName</p>
-                            <input type="text" name="username" id="" placeholder="username" required readOnly defaultValue={user.displayName.split(" ")[0].toLowerCase() +
+                            <input type="text" name="username"  placeholder="username" required readOnly defaultValue={user.displayName.split(" ")[0].toLowerCase() +
                                 Math.floor(Math.random() * 9000 + 1000)} className="w-full bg-white text-[14px] text-[#003D20]  shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Email</p>
-                            <input type="email" name="email" id="" placeholder="Enter Email" required defaultValue={user.email} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="email" name="email"  placeholder="Enter Email" required defaultValue={user.email} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Password</p>
-                            <input type="password" name="password" id="" placeholder="Password" required  defaultValue={user.displayName} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="password" name="password"  placeholder="Password" required  defaultValue={user.displayName} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Position</p>
-                            <input type="text" name="position" id="" placeholder="Enter Position" required defaultValue={'Job Seeker'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="position"  placeholder="Enter Position" required defaultValue={'Job Seeker'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Address</p>
-                            <input type="text" name="address" id="" placeholder="Enter Address" required defaultValue={'Chittagong, Bangladesh'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="address"  placeholder="Enter Address" required defaultValue={'Chittagong, Bangladesh'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
 
 

@@ -22,6 +22,7 @@ import SignupVerificationPage from './Components/SignupVerificationPage';
 import Profile from './Components/Profile';
 import PrivateRoute1 from './Components/PrivateRoute/PrivateRoute1';
 import HomeUserPost from './Components/HomeUserPost';
+import JobSection from './Components/JobSection';
 
 const router = createBrowserRouter([
   {
@@ -31,21 +32,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>,
-        children: [
-          {
-            index: true,
-            element: <AllJob></AllJob>
-          },
-          {
-            path: '/govtJob',
-            element: <GovtJob></GovtJob>
-          },
-          {
-            path: '/privateJob',
-            element: <PrivateJob></PrivateJob>
-          },
-        ]
+        element: <Home></Home>
+      },
+      {
+        path: '/privateJob',
+        element: <JobSection></JobSection>
+      },
+      {
+        path: '/govtJob',
+        element: <JobSection></JobSection>
       },
       {
         path: '/contactUs',

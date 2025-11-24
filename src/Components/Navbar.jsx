@@ -52,9 +52,9 @@ const Navbar = () => {
                     <div className='hidden md:block'>
                         <div className=' flex items-center md:gap-3 lg:gap-5 font-semibold'>
                             <NavLink to={'/'}>Home</NavLink>
+                            <NavLink to={'/privateJob'}>Private Jobs</NavLink>
                             <NavLink to={'/govtJob'} className={'lg:hidden'}>Govt. Jobs</NavLink>
                             <NavLink to={'/govtJob'} className={'hidden lg:block'}>Government Jobs</NavLink>
-                            <NavLink to={'/privateJob'}>Private Jobs</NavLink>
                             <NavLink to={'/contactUs'}>Contact Us</NavLink>
                         </div>
                     </div>
@@ -65,19 +65,23 @@ const Navbar = () => {
                         {
                             (user && (user.emailVerified || providerName === "google.com" || providerName === 'github.com')) ?
                                 <div className="dropdown dropdown-end ">
-                                    <div tabindex="0" role="button" className='flex items-center gap-2' >
-                                        <Link to={'/'} className="text-[#003D20] font-semibold max-w-[150px] truncate ml-2"><span>Hello, </span > {user?.displayName?.split(' ')[0]}</Link>
-                                        <div className="border border-[#007456] shadow2 rounded-full cursor-pointer p-0.5">
+                                    <div tabIndex="0" role="button" className='flex items-center gap-2' >
+                                        <Link to={'/'} className="hidden lg:block text-[#003D20] font-semibold max-w-[150px] truncate ml-2"><span>Hello, </span > {user?.displayName?.split(' ')[0]}</Link>
+                                        <div className="bg-green-50 border border-[#007456] shadow2 rounded-full cursor-pointer ">
                                             {
                                                 user?.photoURL ? (
-                                                    <img src={user.photoURL} alt="img" className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
+                                                    <div className='p-0.5'>
+                                                        <img src={user.photoURL} alt="img" className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
+                                                    </div>
                                                 ) : (
-                                                    <FaUser className='text-[#003D20] w-7 h-7 rounded-full' />
+                                                    <div className='p-1'>
+                                                        <FaUser className='text-[#003D20] w-7 h-7 rounded-full' />
+                                                    </div>
                                                 )
                                             }
                                         </div>
                                     </div>
-                                    <ul tabindex="-1" className="bg-[#007456] text-white font-semibold dropdown-content menu  rounded-box z-1 w-52 p-2 shadow-sm mt-4">
+                                    <ul tabIndex="-1" className="bg-[#007456] text-white font-semibold dropdown-content menu  rounded-box z-1 w-52 p-2 shadow-sm mt-4">
                                         <li className='hover:bg-[#47b396] rounded-md'><Link to={'/profile'}>Profile</Link></li>
                                         <li className='hover:bg-[#47b396] rounded-md'><a>Statistics</a></li>
                                         <li className='hover:bg-[#47b396] rounded-md'><a>Settings</a></li>
@@ -93,8 +97,8 @@ const Navbar = () => {
             <div className={`absolute left-0 top-16 z-1000 md:hidden transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
                 <nav className="flex flex-col min-h-screen min-w-screen  bg-[#007456] text-white pl-2 ">
                     <NavLink to={'/'} className="border-b border-gray-400 hover:bg-[#1b9373] pt-4 sm:pt-5 ">HOME</NavLink>
-                    <NavLink to={'/govtJob'} className="border-b border-gray-400 hover:bg-[#1b9373] pt-4 sm:pt-5 ">Government Jobs</NavLink>
                     <NavLink to={'/privateJob'} className="border-b border-gray-400 hover:bg-[#1b9373] pt-4 sm:pt-5 ">Private Jobs</NavLink>
+                    <NavLink to={'/govtJob'} className="border-b border-gray-400 hover:bg-[#1b9373] pt-4 sm:pt-5 ">Government Jobs</NavLink>
                     <NavLink to={'/contactUs'} className="border-b border-gray-400 hover:bg-[#1b9373] pt-4 sm:pt-5 ">Contact Us</NavLink>
                 </nav>
             </div>
