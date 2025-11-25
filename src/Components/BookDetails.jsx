@@ -22,9 +22,9 @@ const BookDetails = () => {
 
     return (
         <div>
-            <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10"><FaArrowLeft /><p>Back to home</p></button>
+            <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer my-10"><FaArrowLeft /><p>Back to home</p></button>
 
-            <div className=' flex flex-col lg:flex-row gap-10 mb-10 mt-10 sm:mt-20'>
+            <div className=' flex flex-col lg:flex-row gap-10 '>
                 <div className='flex-1/3 bg-green-50 flex justify-center rounded-xl  py-15'>
                     <img src={book.image} alt="" className='h-[321px] w-[221px] rounded-md shadow-[0_10px_10px_gray] -rotate-15' />
                 </div>

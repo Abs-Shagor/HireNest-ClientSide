@@ -1,3 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
 
 /* eslint-disable react-refresh/only-export-components */
@@ -14,10 +16,23 @@ const DataProvider = ({ children }) => {
       .catch(err => console.error(err));
   }, []);
 
-  const data = { books };
+  // fetching jobs data
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['jobs'],
+    queryFn: async () => {
+      const res = await axios.get('http://localhost:3000/jobs');
+      return res.data;
+    },
+  });
+  let jobs = [...(data || [])].reverse();
+  let privateJobs = jobs.filter(job => job.job_category === 'private')
+  let govtJobs = jobs.filter(job => job.job_category === 'govt');
+
+
+  const All_data = { books, jobs, privateJobs, govtJobs, isLoading, isError };
 
   return (
-    <DataContext.Provider value={data}>
+    <DataContext.Provider value={All_data}>
       {children}
     </DataContext.Provider>
   );

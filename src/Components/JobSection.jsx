@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import AllJob from './AllJob';
 import { toast } from 'react-toastify';
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
@@ -9,6 +8,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { Link, Outlet } from "react-router-dom";
 import { DataContext } from '../Providers/DataProvider';
 import HomeUserPost from './HomeUserPost';
+import JobsCart from './JobsCart';
 
 const JobSection = () => {
     // To show the upperside of the page we use the below method
@@ -169,8 +169,8 @@ const JobSection = () => {
             {/* Middle: Jobs Post */}
             <div className="flex-1  h-screen overflow-y-auto scroll-smooth scrollbar-hide sm:p-3">
                 <HomeUserPost></HomeUserPost>
-                {/* All Job section */}
-                <AllJob></AllJob>
+                {/* Job cart */}
+                <JobsCart></JobsCart>
             </div>
 
 
