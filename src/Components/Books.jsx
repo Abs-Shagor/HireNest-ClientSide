@@ -15,9 +15,9 @@ const Books = () => {
 
     return (
         <div>
-            <button onClick={() => navigate('/')} className="flex items-center gap-1 text-[#003D20]  font-semibold cursor-pointer mt-10"><FaArrowLeft /><p>Back to home</p></button>
+            <button onClick={() => navigate('/')} className="flex items-center gap-1 text-[#003D20]  font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
             <div>
-                <h1 className='text-[32px] text-[#003D20] text-center font-semibold  my-10  '>Books</h1>
+                <h1 className='text-[32px] text-[#003D20] text-center font-semibold  mb-10 '>Books</h1>
                 <div className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-5 lg:gap-10 justify-items-center '>
                     {
                         books.map(bookkk => {

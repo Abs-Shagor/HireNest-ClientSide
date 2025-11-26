@@ -35,7 +35,7 @@ const JobsCart = () => {
 
     //capitalize first word
     function capitalize(str) {
-        if (!str) return ''; // Handle undefined/null
+        if (!str) return 'Co.'; // Handle undefined/null
         if (typeof str !== 'string') {
             str = String(str); // Convert numbers/other types to string
         }
@@ -82,7 +82,7 @@ const JobsCart = () => {
                                         <div>
                                             <h3 className='text-[18px] sm:text-[22px] text-[#003D20] font-semibold '>{capitalize(job.position_name)}</h3>
                                             <div className='flex gap-1 text-[12px]  sm:text-[14px] text-clr2 '>
-                                                <p>{capitalize(job.company_name)}</p>
+                                                <p>{job.company_name}</p>
                                                 <p>|</p>
                                                 <p>{capitalize(job.location)}</p>
                                             </div>
@@ -99,7 +99,7 @@ const JobsCart = () => {
                                         </div>
                                         <div>
                                             <p className='text-clr2'>Salary</p>
-                                            <p className='text-[#003D20] font-semibold'><span>{job.salary / 1000}</span>k BDT/Month</p>
+                                            <p className='text-[#003D20] font-semibold'><span>{job.salary}</span> BDT/Month</p>
                                         </div>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@ const JobsCart = () => {
                                 <div className='text-clr2 text-[12px] sm:text-[14px] '>{timeAgo(job.createdAt)} </div>
                                 <div className='flex items-center gap-2 lg:gap-3 ' >
                                     <Link to={`/jobdetails/${job._id}`} className="btn btn-ghost bg-[#fbfdfd] text-[#007456] shadow-[0_1px_2px_#93c0b4] hover:text-white hover:bg-[#007456] rounded-xl  ">View Details</Link>
-                                    <Link to={'/'} className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-xl ">Apply Now</Link>
+                                    <Link to={job.apply_link} target="_blank" rel="noopener noreferrer" className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-xl ">Apply Now</Link>
                                 </div>
                             </div>
                         </div>

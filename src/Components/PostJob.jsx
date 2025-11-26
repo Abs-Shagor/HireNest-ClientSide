@@ -71,8 +71,8 @@ const PostJob = () => {
 
     return (
         <div>
-            <button onClick={() => navigate('/')} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10"><FaArrowLeft /><p>Back to home</p></button>
-            <div className="bg-[#f6f6f6] rounded-lg p-10 my-10">
+            <button onClick={() => navigate('/')} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
+            <div className="bg-[#f6f6f6] rounded-lg p-10 ">
                 {/* <p className='text-[14px] text-center text-[#70624c]'>--- New Entry ---</p> */}
                 <h1 className='flex gap-1 items-center text-[26px] text-center text-[#003D20] font-semibold mb-5 sm:mb-10'> <IoBagHandleSharp />Publish a Job</h1>
                 <form onSubmit={handleSubmit} ref={formRef} className="grid gap-5">
@@ -91,7 +91,7 @@ const PostJob = () => {
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Salary</p>
-                            <input type="text" name="salary" id="" placeholder="Enter salary" required className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="salary" id="" placeholder="Enter salary in BDT" required className="w-full bg-white shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Company Name</p>

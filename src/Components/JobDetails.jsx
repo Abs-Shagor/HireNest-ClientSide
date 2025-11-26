@@ -22,23 +22,22 @@ const JobDetails = () => {
 
     return (
         <div>
-            <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer my-10"><FaArrowLeft /><p>Back to home</p></button>
+            <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
 
-            <div className=' bg-green-50 '>
-                <p>{job.company_name}</p>
-                <p>{job.salary}</p>
-                <p>{job.experience}</p>
-                <img src={`http://localhost:3000${job.company_logo}`} alt="" />
-                <p>{job.description}</p>
+            {
+                job.job_category === 'govt' ?
+                    <iframe
+                        src={`http://localhost:3000${job.pdf_file}#view=fitH`}
+                        width="100%"
+                        height="650px"
+                        title="Job Description PDF"
+                    />
+                    :
+                    <div className='bg-green-50 p-5'>
+                        Hey
+                    </div>
+            }
 
-                <iframe
-                    src={`http://localhost:3000${job.pdf_file}#view=fitH`}
-                    width="100%"
-                    height="650px"
-                    title="Job Description PDF"
-                />
-
-            </div>
         </div>
     );
 };

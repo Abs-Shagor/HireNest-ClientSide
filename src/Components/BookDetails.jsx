@@ -22,7 +22,7 @@ const BookDetails = () => {
 
     return (
         <div>
-            <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer my-10"><FaArrowLeft /><p>Back to home</p></button>
+            <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
 
             <div className=' flex flex-col lg:flex-row gap-10 '>
                 <div className='flex-1/3 bg-green-50 flex justify-center rounded-xl  py-15'>
