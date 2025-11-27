@@ -167,7 +167,7 @@ const JobSection = () => {
 
 
             {/* Middle: Jobs Post */}
-            <div className="flex-1  h-screen overflow-y-auto scroll-smooth scrollbar-hide sm:p-3">
+            <div className="flex-1  h-[1000px] overflow-y-auto scroll-smooth scrollbar-hide sm:p-3">
                 <HomeUserPost></HomeUserPost>
                 {/* Job cart */}
                 <JobsCart></JobsCart>
@@ -175,7 +175,7 @@ const JobSection = () => {
 
 
             {/* Right sidebar */}
-            <div className="hidden lg:block  md:max-w-[230px] xl:max-w-[270px] w-full h-screen overflow-y-auto scroll-smooth scrollbar-hide ">
+            <div className="hidden lg:block  md:max-w-[230px] xl:max-w-[270px] w-full h-[1000px] overflow-y-auto scroll-smooth scrollbar-hide ">
                 <button onClick={handleSubscribe} className="w-full btn btn-ghost bg-green-50 border border-[#007456] text-[#007456] shadow-[0_0px_2px_#007456] hover:text-white hover:bg-[#007456] rounded-md mt-2">Subscribe Now</button>
 
                 {/* Find us on */}

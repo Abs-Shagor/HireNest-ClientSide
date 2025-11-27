@@ -41,6 +41,11 @@ const JobsCart = () => {
         }
         return str.split(' ').map(w => w[0]?.toUpperCase() + w.slice(1)).join(' ');
     }
+    // salary
+    function set_salary(salary) {
+        if(salary.toLowerCase()!=='negotiable') return `${salary} BDT/Month`;
+        return 'Negotiable';
+    }
 
     //
     const location = useLocation();
@@ -80,26 +85,26 @@ const JobsCart = () => {
                                 <div className='flex-1 grid gap-5'>
                                     <div className='flex justify-between'>
                                         <div>
-                                            <h3 className='text-[18px] sm:text-[22px] text-[#003D20] font-semibold '>{capitalize(job.position_name)}</h3>
+                                            <h3 className='text-[18px] sm:text-[22px] text-[#003D20] font-semibold '>{capitalize(job.position_name.trim())}</h3>
                                             <div className='flex gap-1 text-[12px]  sm:text-[14px] text-clr2 '>
-                                                <p>{job.company_name}</p>
+                                                <p>{job.company_name.trim() }</p>
                                                 <p>|</p>
-                                                <p>{capitalize(job.location)}</p>
+                                                <p>{capitalize(job.location.trim() )}</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div className='flex gap-3 sm:gap-5 justify-between text-[14px] sm:text-[16px] '>
                                         <div>
                                             <p className='text-clr2'>Experience</p>
-                                            <p className='text-[#003D20] font-semibold'>{job.experience} Years</p>
+                                            <p className='text-[#003D20] font-semibold'>{job.experience.trim() } Years</p>
                                         </div>
                                         <div>
                                             <p className='text-clr2'>Job Type</p>
-                                            <p className='text-[#003D20] font-semibold'>{capitalize(job.job_type)}</p>
+                                            <p className='text-[#003D20] font-semibold'>{capitalize(job.job_type.trim() )}</p>
                                         </div>
                                         <div>
                                             <p className='text-clr2'>Salary</p>
-                                            <p className='text-[#003D20] font-semibold'><span>{job.salary}</span> BDT/Month</p>
+                                            <p className='text-[#003D20] font-semibold'>{set_salary(job.salary.trim() )}</p>
                                         </div>
                                     </div>
                                 </div>

@@ -1,13 +1,22 @@
 import Marquee from "react-fast-marquee";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaArrowCircleRight } from "react-icons/fa";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../Providers/DataProvider";
-import { AuthContext } from "../Providers/AuthProvider";
 import JobSection from "./JobSection";
+import { useNavigate } from "react-router-dom";
+
 
 
 const Home = () => {
+    const {searchedOption, setSearchedOption}= useContext(DataContext);
+    const navigate = useNavigate();
+    function handleSearchOption(xyz) {
+        setSearchedOption(xyz);
+    }
+    function handleSearchSubmit() {
+        navigate('/searchedOptions');
+    }
 
     return (
         <div className='my-10 sm:my-20'>
@@ -27,18 +36,21 @@ const Home = () => {
                     <input
                         type="text"
                         placeholder="Search your dream job..."
+                        value={searchedOption}
+                        onChange={(e) => setSearchedOption(e.target.value)}
+                        onKeyDown={(e) => { if (e.key === 'Enter') {handleSearchSubmit();}}}
                         required
-                        className="w-full bg-[#fbfdfd] placeholder-[#769788] text-[#003D20] rounded-full outline-none border border-[#c5ded7] focus:ring-1  focus:border-[#007456] transition shadow2 pl-10 pr-10 py-2"
+                        className="w-full bg-[#fbfdfd] placeholder-[#769788] text-[#003D20] rounded-full outline-none border border-gray-400 sm:border-[#c5ded7] focus:ring-1  focus:border-[#007456] transition shadow2 pl-10 pr-10 py-2"
                     />
-                    <FaArrowCircleRight className="absolute right-2 top-1/2 -translate-y-1/2 text-[#007456] hover:text-[#003D20] cursor-pointer w-7 h-7 " />
+                    <FaArrowCircleRight onClick={handleSearchSubmit} className="absolute right-2 top-1/2 -translate-y-1/2 text-[#007456] hover:text-[#003D20] cursor-pointer w-7 h-7 " />
                 </div>
                 <div className="max-w-[400px] mx-auto flex flex-wrap justify-center  gap-2 mt-3">
-                    <span className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">web developer</span>
-                    <span className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Designer</span>
-                    <span className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">project manager</span>
-                    <span className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">UI/UX</span>
-                    <span className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">SQA</span>
-                    <span className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Ai engineer</span>
+                    <span onClick={() => handleSearchOption('web developer')} className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">web developer</span>
+                    <span onClick={() => handleSearchOption('Designer')} className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Designer</span>
+                    <span onClick={() => handleSearchOption('project manager')} className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">project manager</span>
+                    <span onClick={() => handleSearchOption('UI/UX')} className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">UI/UX</span>
+                    <span onClick={() => handleSearchOption('SQA')} className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">SQA</span>
+                    <span onClick={() => handleSearchOption('Ai engineer')} className="bg-[#fbfdfd] text-[#003D20] text-[12px] sm:text-[14px] hover:bg-[#007456] hover:text-white cursor-pointer border border-[#c5ded7] rounded-full px-2 py-1 ">Ai engineer</span>
                 </div>
             </div>
 

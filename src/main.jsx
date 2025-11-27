@@ -22,6 +22,7 @@ import JobSection from './Components/JobSection';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import JobDetails from './Components/JobDetails';
+import SearchOptionsPage from './Components/SearchOptionsPage';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: '/jobdetails/:jobId',
         element: <JobDetails></JobDetails>
+      },
+      {
+        path: '/searchedOptions',
+        element: <SearchOptionsPage></SearchOptionsPage>
       }
     ]
   }
