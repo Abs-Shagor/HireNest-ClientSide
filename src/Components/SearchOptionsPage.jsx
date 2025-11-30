@@ -65,7 +65,7 @@ const SearchOptionsPage = () => {
 
     return (
         <div>
-            <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
+            <button onClick={() => {navigate(-1), setSearchedOption('') }} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
 
             {
                 relevantJobs.length === 0 ?

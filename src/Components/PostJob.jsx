@@ -65,7 +65,18 @@ const PostJob = () => {
     function handleSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
-        mutation.mutate(formData);  // Send FormData, don't convert to object
+
+        const trimmedFormData = new FormData();
+
+        // Trim or deleting extra space from inputs before send to server side
+        for (let [key, value] of formData.entries()) {
+            if (typeof value === 'string') {
+                trimmedFormData.append(key, value.trim());
+            } else {
+                trimmedFormData.append(key, value); // Keep files as-is
+            }
+        }
+        mutation.mutate(trimmedFormData);
     }
 
 

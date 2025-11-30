@@ -16,17 +16,52 @@ const JobSection = () => {
         window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     }, []);
 
-    const { books } = useContext(DataContext);
+    const { books, jobs } = useContext(DataContext);
 
     function handleSubscribe() {
         toast.warning('This feature is under development.');
     }
+    //capitalize first word
+    function capitalize(str) {
+        if (!str) return 'Co.'; // Handle undefined/null
+        if (typeof str !== 'string') {
+            str = String(str); // Convert numbers/other types to string
+        }
+        return str.split(' ').map(w => w[0]?.toUpperCase() + w.slice(1)).join(' ');
+    }
+
+    const fullTimeCount = jobs.filter(job => job.job_type.toLowerCase() === 'full time').length;
+    const partTimeCount = jobs.filter(job => job.job_type.toLowerCase() === 'part time').length;
+    const internshipCount = jobs.filter(job => job.job_type.toLowerCase() === 'internship').length;
+    const freelanceCount = jobs.filter(job => job.job_type.toLowerCase() === 'freelance').length;
+    const contractCount = jobs.filter(job => job.job_type.toLowerCase() === 'contract').length;
+
+    const jobTypeAndCounts = jobs.reduce((acc, job) => {
+        const type = job.job_type.toLowerCase();
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+    }, {});
+    const jobCategoryAndCount = jobs.reduce((acc, job) => {
+        const type = job.position_name.toLowerCase();
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+    }, {});
+    const jobLocationAndCount = jobs.reduce((acc, job) => {
+        const type = job.location.toLowerCase();
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+    }, {});
+    const jobCompanyAndCount = jobs.reduce((acc, job) => {
+        const type = job.company_name.toLowerCase();
+        acc[type] = (acc[type] || 0) + 1;
+        return acc;
+    }, {});
 
     return (
         <div className=" flex flex-col md:flex-row gap-5  mt-5">
 
             {/* Left sidebar: Filter */}
-            <div className=" hidden md:block md:max-w-[230px]  xl:max-w-[270px] w-full h-screen overflow-y-auto scroll-smooth scrollbar-hide ">
+            <div className=" hidden md:block md:max-w-[230px]  xl:max-w-[270px] w-full h-[1000px] overflow-y-auto scroll-smooth scrollbar-hide ">
                 <div>
                     <div className="flex justify-between items-center gap-2">
                         <h4 className="text-[20px] text-clr3 font-semibold flex items-center ">All Filter</h4>
@@ -40,27 +75,30 @@ const JobSection = () => {
                         <input type="radio" name="my-accordion-4" defaultChecked />
                         <div className="collapse-title font-semibold">Job Type</div>
                         <div className="collapse-content text-sm space-y-3 ">
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Full Time (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Part Time (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Internship (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Freelance (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Contract (23)</p>
-                            </div>
-                            <button className="bg-[#fbfdfd] text-[12px] px-2 py-1 border border-gray-400 rounded-md ">View More</button>
+                            {
+                                Object.entries(jobTypeAndCounts).map(([type, count]) => (
+                                    <div key={type} className="flex gap-2 items-center">
+                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                        <p>{capitalize(type)} ({count})</p>
+                                    </div>
+                                ))
+                            }
+                            {/* <button className="bg-[#fbfdfd] text-[12px] px-2 py-1 border border-gray-400 rounded-md ">View More</button> */}
+                        </div>
+                    </div>
+
+                    <div className="collapse collapse-arrow join-item border-base-300 border">
+                        <input type="radio" name="my-accordion-4" defaultChecked />
+                        <div className="collapse-title font-semibold">Location</div>
+                        <div className="collapse-content text-sm space-y-3 ">
+                            {
+                                Object.entries(jobLocationAndCount).map(([type, count]) => (
+                                    <div key={type} className="flex gap-2 items-center">
+                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                        <p>{capitalize(type)} ({count})</p>
+                                    </div>
+                                ))
+                            }
                         </div>
 
                     </div>
@@ -69,97 +107,32 @@ const JobSection = () => {
                         <input type="radio" name="my-accordion-4" defaultChecked />
                         <div className="collapse-title font-semibold">Category</div>
                         <div className="collapse-content text-sm space-y-3 ">
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Web Developer (61)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>UI/UX Designer (44)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Ai Engineer (17)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>SQA (35)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Project Manager (6)</p>
-                            </div>
-                            <button className="bg-[#fbfdfd] text-[12px] px-2 py-1 border border-gray-400 rounded-md ">View More</button>
+                            {
+                                Object.entries(jobCategoryAndCount).map(([type, count]) => (
+                                    <div key={type} className="flex gap-2 items-center">
+                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                        <p>{capitalize(type)} ({count})</p>
+                                    </div>
+                                ))
+                            }
                         </div>
 
                     </div>
 
-                    <div className="collapse collapse-arrow join-item border-base-300 border">
-                        <input type="radio" name="my-accordion-4" defaultChecked />
-                        <div className="collapse-title font-semibold">Location</div>
-                        <div className="collapse-content text-sm space-y-3 ">
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Dhaka (110)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Chittagong (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Sylhet (56)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Rajshahi (17)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Khulna (4)</p>
-                            </div>
-                            <button className="bg-[#fbfdfd] text-[12px] px-2 py-1 border border-gray-400 rounded-md ">View More</button>
-                        </div>
-
-                    </div>
 
                     <div className="collapse collapse-arrow join-item border-base-300 border">
                         <input type="radio" name="my-accordion-4" defaultChecked />
                         <div className="collapse-title font-semibold">Company</div>
                         <div className="collapse-content text-sm space-y-3 ">
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>AppsCode Inc.  (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Robi Axiata PLC. (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Craftsmen (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Therap BD Ltd. (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>BRAC (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Appifylab (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>SELISE (23)</p>
-                            </div>
-                            <div className="flex gap-2 items-center">
-                                <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
-                                <p>Brain Station (56)</p>
-                            </div>
-                            <button className="bg-[#fbfdfd] text-[12px] px-2 py-1 border border-gray-400 rounded-md ">View More</button>
+                            {
+                                Object.entries(jobCompanyAndCount).map(([type, count]) => (
+                                    <div key={type} className="flex gap-2 items-center">
+                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                        <p>{capitalize(type)} ({count})</p>
+                                    </div>
+                                ))
+                            }
+                            {/* <button className="bg-[#fbfdfd] text-[12px] px-2 py-1 border border-gray-400 rounded-md ">View More</button> */}
                         </div>
                     </div>
                 </form>

@@ -1,9 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { CiBookmark } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 import { DataContext } from '../Providers/DataProvider';
 import { useLocation } from 'react-router-dom';
+import { TiArrowSortedDown } from "react-icons/ti";
+
 
 const JobsCart = () => {
     // To show the upperside of the page we use the below method
@@ -43,19 +45,46 @@ const JobsCart = () => {
     }
     // salary
     function set_salary(salary) {
-        if(salary.toLowerCase()!=='negotiable') return `${salary} BDT/Month`;
+        if (salary.toLowerCase() !== 'negotiable') return `${salary} BDT/Month`;
         return 'Negotiable';
     }
 
     //
     const location = useLocation();
     const { jobs, privateJobs, govtJobs, isLoading, isError } = useContext(DataContext);
-    let jobss = jobs;
-    if (location.pathname === '/privateJob') {
-        jobss = privateJobs;
-    } else if (location.pathname === '/govtJob') {
-        jobss = govtJobs;
+    const [jobss, setJobss] = useState(jobs);
+    useEffect(() => {
+        if (location.pathname === '/privateJob') {
+            setJobss(privateJobs);
+        } else if (location.pathname === '/govtJob') {
+            setJobss(govtJobs);
+        } else {
+            setJobss(jobs);
+        }
+    }, [location.pathname, jobs, privateJobs, govtJobs]);
+
+    function handleAscending() {
+        const sortedJobs = [...jobss].sort((a, b) =>
+            a.position_name.localeCompare(b.position_name)
+        );
+        setJobss(sortedJobs);
     }
+    function handleDescending() {
+        const sortedJobs = [...jobss].sort((a, b) =>
+            b.position_name.localeCompare(a.position_name)
+        );
+        setJobss(sortedJobs);
+    }
+    function handleReecent() {
+        setJobss(jobs);
+    }
+    function handleCompany() {
+        const sortedJobs = [...jobss].sort((a, b) =>
+            a.company_name.localeCompare(b.company_name)
+        );
+        setJobss(sortedJobs);
+    }
+    
 
     if (isLoading) {
         return (
@@ -69,58 +98,76 @@ const JobsCart = () => {
     // console.log(jobs[0].company_logo)
 
     return (
-        <div className='grid gap-5'>
-            {
-                jobss.map(job => {
-                    return (
-                        <div key={job._id} className='border border-[#93c0b4] sm:border-white shadow2 rounded-xl'>
-                            <div className='relative flex gap-3 sm:gap-5 p-3 sm:p-5'>
-                                <div>
-                                    <img src={`http://localhost:3000${job.company_logo}`} alt="img" className='h-10 w-10 sm:h-15 sm:w-15 rounded-sm shadow2 scale1 ' />
-                                </div>
-                                <div className='absolute right-5 top-4 flex gap-1 items-center text-clr2'>
-                                    <CiBookmark />
-                                    <p className='text-[14px]'>Save Job</p>
-                                </div>
-                                <div className='flex-1 grid gap-5'>
-                                    <div className='flex justify-between'>
-                                        <div>
-                                            <h3 className='text-[18px] sm:text-[22px] text-[#003D20] font-semibold '>{capitalize(job.position_name.trim())}</h3>
-                                            <div className='flex gap-1 text-[12px]  sm:text-[14px] text-clr2 '>
-                                                <p>{job.company_name.trim() }</p>
-                                                <p>|</p>
-                                                <p>{capitalize(job.location.trim() )}</p>
+        <div>
+            <div className='flex items-center gap-2 my-5'>
+                <hr className="flex-1 text-[#93c0b4] w-full " />
+                <div className='flex items-center gap-1'>
+                    <p className='text-[14px] text-gray-500 '>Sort by: </p>
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex="0" role="button" className="text-[14px] text-[#003D20] flex items-center cursor-pointer">Click <TiArrowSortedDown className='h-5 w-5' /></div>
+                        <ul tabIndex="-1" className="dropdown-content menu bg-[#007456]  text-white rounded-box z-1 w-52 p-2 shadow-sm">
+                            <li><a onClick={handleReecent} className='hover:bg-[#47b396] '>Recent</a></li>
+                            <li><a onClick={handleCompany} className='hover:bg-[#47b396] '>Company</a></li>
+                            <li><a onClick={handleAscending} className='hover:bg-[#47b396] '>Ascending</a></li>
+                            <li><a onClick={handleDescending} className='hover:bg-[#47b396] '>Descending</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div className='grid gap-5'>
+                {
+                    jobss.map(job => {
+                        return (
+                            <div key={job._id} className='border border-[#93c0b4] sm:border-white shadow2 rounded-xl'>
+                                <div className='relative flex gap-3 sm:gap-5 p-3 sm:p-5'>
+                                    <div>
+                                        <img src={`http://localhost:3000${job.company_logo}`} alt="img" className='h-10 w-10 sm:h-15 sm:w-15 rounded-sm shadow2 scale1 ' />
+                                    </div>
+                                    <div className='absolute right-5 top-4 flex gap-1 items-center text-clr2'>
+                                        <CiBookmark />
+                                        <p className='text-[14px]'>Save Job</p>
+                                    </div>
+                                    <div className='flex-1 grid gap-5'>
+                                        <div className='flex justify-between'>
+                                            <div>
+                                                <h3 className='text-[18px] sm:text-[22px] text-[#003D20] font-semibold '>{capitalize(job.position_name.trim())}</h3>
+                                                <div className='flex gap-1 text-[12px]  sm:text-[14px] text-clr2 '>
+                                                    <p>{job.company_name.trim()}</p>
+                                                    <p>|</p>
+                                                    <p>{capitalize(job.location.trim())}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='flex gap-3 sm:gap-5 justify-between text-[14px] sm:text-[16px] '>
+                                            <div>
+                                                <p className='text-clr2'>Experience</p>
+                                                <p className='text-[#003D20] font-semibold'>{job.experience.trim()} Years</p>
+                                            </div>
+                                            <div>
+                                                <p className='text-clr2'>Job Type</p>
+                                                <p className='text-[#003D20] font-semibold'>{capitalize(job.job_type.trim())}</p>
+                                            </div>
+                                            <div>
+                                                <p className='text-clr2'>Salary</p>
+                                                <p className='text-[#003D20] font-semibold'>{set_salary(job.salary.trim())}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='flex gap-3 sm:gap-5 justify-between text-[14px] sm:text-[16px] '>
-                                        <div>
-                                            <p className='text-clr2'>Experience</p>
-                                            <p className='text-[#003D20] font-semibold'>{job.experience.trim() } Years</p>
-                                        </div>
-                                        <div>
-                                            <p className='text-clr2'>Job Type</p>
-                                            <p className='text-[#003D20] font-semibold'>{capitalize(job.job_type.trim() )}</p>
-                                        </div>
-                                        <div>
-                                            <p className='text-clr2'>Salary</p>
-                                            <p className='text-[#003D20] font-semibold'>{set_salary(job.salary.trim() )}</p>
-                                        </div>
+                                </div>
+                                <div className='flex gap-3 sm:gap-5 justify-between items-center bg-green-50 rounded-b-xl  px-5 py-2'>
+                                    <div className='text-clr2 text-[12px] sm:text-[14px] '>{timeAgo(job.createdAt)} </div>
+                                    <div className='flex items-center gap-2 lg:gap-3 ' >
+                                        <Link to={`/jobdetails/${job._id}`} className="btn btn-ghost bg-[#fbfdfd] text-[#007456] shadow-[0_1px_2px_#93c0b4] hover:text-white hover:bg-[#007456] rounded-xl  ">View Details</Link>
+                                        <Link to={job.apply_link} target="_blank" rel="noopener noreferrer" className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-xl ">Apply Now</Link>
                                     </div>
                                 </div>
                             </div>
-                            <div className='flex gap-3 sm:gap-5 justify-between items-center bg-green-50 rounded-b-xl  px-5 py-2'>
-                                <div className='text-clr2 text-[12px] sm:text-[14px] '>{timeAgo(job.createdAt)} </div>
-                                <div className='flex items-center gap-2 lg:gap-3 ' >
-                                    <Link to={`/jobdetails/${job._id}`} className="btn btn-ghost bg-[#fbfdfd] text-[#007456] shadow-[0_1px_2px_#93c0b4] hover:text-white hover:bg-[#007456] rounded-xl  ">View Details</Link>
-                                    <Link to={job.apply_link} target="_blank" rel="noopener noreferrer" className="btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-xl ">Apply Now</Link>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })
-            }
+                        )
+                    })
+                }
 
+            </div>
         </div>
     );
 };
