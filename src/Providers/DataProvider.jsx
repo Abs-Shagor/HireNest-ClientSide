@@ -29,9 +29,9 @@ const DataProvider = ({ children }) => {
   let govtJobs = jobs.filter(job => job.job_category === 'govt');
 
   const [searchedOption, setSearchedOption] = useState('');
+  const [checkedList, setCheckedList] = useState([]);
 
-
-  const All_data = { books, jobs, privateJobs, govtJobs, isLoading, isError, searchedOption, setSearchedOption };
+  const All_data = { books, jobs, privateJobs, govtJobs, isLoading, isError, searchedOption, setSearchedOption, checkedList, setCheckedList };
 
   return (
     <DataContext.Provider value={All_data}>

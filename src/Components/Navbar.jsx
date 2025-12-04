@@ -4,9 +4,11 @@ import { FiUser } from "react-icons/fi";
 import { AuthContext } from '../Providers/AuthProvider';
 import { toast } from 'react-toastify';
 import { FaUser } from "react-icons/fa";
+import { DataContext } from '../Providers/DataProvider';
 
 
 const Navbar = () => {
+    const {setCheckedList} = useContext(DataContext);
     const [open, setOpen] = useState(false);
     function hamburger() {
         setOpen(!open);
@@ -45,17 +47,17 @@ const Navbar = () => {
                         <Link to={'/'} className='hidden md:block'>
                             <img className='w-7 lg:w-9 rounded-sm  ' src="../../public/HN3.png" alt="" />
                         </Link>
-                        <Link to={'/'} className='text-[22px] lg:text-[30px] text-[#003D20] font-semibold '>HireNest</Link>
+                        <Link to={'/'} onClick={() => setCheckedList([])} className='text-[22px] lg:text-[30px] text-[#003D20] font-semibold '>HireNest</Link>
                         {/* <input type="text" name="" id="" placeholder='Search' className='border border-[#007456] px-3 py-1 rounded-full' /> */}
                     </div>
 
                     <div className='hidden md:block'>
                         <div className=' flex items-center md:gap-3 lg:gap-5 font-semibold'>
-                            <NavLink to={'/'}>Home</NavLink>
-                            <NavLink to={'/privateJob'}>Private Jobs</NavLink>
-                            <NavLink to={'/govtJob'} className={'lg:hidden'}>Govt. Jobs</NavLink>
-                            <NavLink to={'/govtJob'} className={'hidden lg:block'}>Government Jobs</NavLink>
-                            <NavLink to={'/contactUs'}>Contact Us</NavLink>
+                            <NavLink to={'/'} onClick={() => setCheckedList([])}>Home</NavLink>
+                            <NavLink to={'/privateJob'} onClick={() => setCheckedList([])}  >Private Jobs</NavLink>
+                            <NavLink to={'/govtJob'} onClick={() => setCheckedList([])} className={'lg:hidden'}>Govt. Jobs</NavLink>
+                            <NavLink to={'/govtJob'} onClick={() => setCheckedList([])} className={'hidden lg:block'}>Government Jobs</NavLink>
+                            <NavLink to={'/contactUs'} onClick={() => setCheckedList([])} >Contact Us</NavLink>
                         </div>
                     </div>
 

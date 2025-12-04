@@ -9,13 +9,13 @@ import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
-    const {searchedOption, setSearchedOption}= useContext(DataContext);
+    const {searchedOption, setSearchedOption, jobs}= useContext(DataContext);
     const navigate = useNavigate();
     function handleSearchOption(xyz) {
         setSearchedOption(xyz);
     }
     function handleSearchSubmit() {
-        navigate('/searchedOptions');
+        if(searchedOption!=='') navigate('/searchedOptions');
     }
 
     return (
@@ -23,7 +23,7 @@ const Home = () => {
             <div className='max-w-[330px] sm:max-w-[500px] mx-auto flex flex-col gap-1 items-center '>
                 <h3 className='text-[20px] sm:text-[30px] text-[#003D20] font-semibold'>Find your dream job with __Hirenest</h3>
                 <div className='flex items-center gap-1'>
-                    <p className='text-clr2 '>500+ Jobs</p>
+                    <p className='text-clr2 '>{jobs.length}+ Jobs</p>
                     <div className='flex -space-x-3'>
                         <img src="../../public/company_logo/1.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
                         <img src="../../public/company_logo/2.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
@@ -111,7 +111,6 @@ const Home = () => {
 
 
             {/* Job Section */}
-
             <JobSection ></JobSection>
 
         </div>

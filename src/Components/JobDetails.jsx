@@ -19,7 +19,7 @@ const JobDetails = () => {
     // loading job data
     const param = useParams();
     const job = jobs?.find(job => job._id == param.jobId);
-    console.log(job)
+    // console.log(job)
 
 
     return (

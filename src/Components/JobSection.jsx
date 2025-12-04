@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
@@ -30,12 +30,7 @@ const JobSection = () => {
         return str.split(' ').map(w => w[0]?.toUpperCase() + w.slice(1)).join(' ');
     }
 
-    const fullTimeCount = jobs.filter(job => job.job_type.toLowerCase() === 'full time').length;
-    const partTimeCount = jobs.filter(job => job.job_type.toLowerCase() === 'part time').length;
-    const internshipCount = jobs.filter(job => job.job_type.toLowerCase() === 'internship').length;
-    const freelanceCount = jobs.filter(job => job.job_type.toLowerCase() === 'freelance').length;
-    const contractCount = jobs.filter(job => job.job_type.toLowerCase() === 'contract').length;
-
+    // calculating job type, location, company, category and their counts.
     const jobTypeAndCounts = jobs.reduce((acc, job) => {
         const type = job.job_type.toLowerCase();
         acc[type] = (acc[type] || 0) + 1;
@@ -57,6 +52,26 @@ const JobSection = () => {
         return acc;
     }, {});
 
+    // handling filter/checkbox/clear all
+    const {checkedList, setCheckedList} = useContext(DataContext);
+    function handleSelect(event) {
+        const value = (event.target.value).toLowerCase();
+        const isChecked = event.target.checked;
+        if (isChecked) {
+            setCheckedList([...checkedList, value]);
+        }
+        else {
+            const filteredList = checkedList.filter(item => item !== value)
+            setCheckedList(filteredList);
+        }
+    }
+    // if (checkedList.length) console.log(checkedList);
+    function handleClearAll(event) {
+        setCheckedList([]);
+    }
+
+
+
     return (
         <div className=" flex flex-col md:flex-row gap-5  mt-5">
 
@@ -65,7 +80,7 @@ const JobSection = () => {
                 <div>
                     <div className="flex justify-between items-center gap-2">
                         <h4 className="text-[20px] text-clr3 font-semibold flex items-center ">All Filter</h4>
-                        <p onClick={() => document.getElementById("filters-form").reset()} className="text-[#48928e] hover:text-[#003D20] cursor-pointer ">Clear All</p>
+                        <p onClick={handleClearAll} className="text-[#48928e] hover:text-[#003D20] cursor-pointer ">Clear All</p>
                     </div>
                     <hr className="text-[#007456] mt-2 mb-4" />
                 </div>
@@ -77,8 +92,17 @@ const JobSection = () => {
                         <div className="collapse-content text-sm space-y-3 ">
                             {
                                 Object.entries(jobTypeAndCounts).map(([type, count]) => (
-                                    <div key={type} className="flex gap-2 items-center">
-                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                    <div key={type} className="flex gap-2 items-center ">
+                                        <input
+                                            type="checkbox"
+                                            name='job_type'
+                                            checked={checkedList.includes(type)} // Note:initially, checked is false as the checkList doesn't have the type.
+                                            // but, by clicking checkbox its become true. which is done by DOM. DOM change the state of checked/checkbox
+                                            // actually, to uncheck all checkbox we use this method for clear all
+                                            value={type}           
+                                            onChange={handleSelect}
+                                            className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md "
+                                        />
                                         <p>{capitalize(type)} ({count})</p>
                                     </div>
                                 ))
@@ -94,7 +118,13 @@ const JobSection = () => {
                             {
                                 Object.entries(jobLocationAndCount).map(([type, count]) => (
                                     <div key={type} className="flex gap-2 items-center">
-                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                        <input
+                                            type="checkbox"
+                                            name='location'
+                                            checked={checkedList.includes(type)}
+                                            value={type}
+                                            onChange={handleSelect}
+                                            className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
                                         <p>{capitalize(type)} ({count})</p>
                                     </div>
                                 ))
@@ -110,7 +140,13 @@ const JobSection = () => {
                             {
                                 Object.entries(jobCategoryAndCount).map(([type, count]) => (
                                     <div key={type} className="flex gap-2 items-center">
-                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                        <input
+                                            type="checkbox"
+                                            name='category'
+                                            checked={checkedList.includes(type)}
+                                            value={type}
+                                            onChange={handleSelect}
+                                            className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
                                         <p>{capitalize(type)} ({count})</p>
                                     </div>
                                 ))
@@ -127,7 +163,13 @@ const JobSection = () => {
                             {
                                 Object.entries(jobCompanyAndCount).map(([type, count]) => (
                                     <div key={type} className="flex gap-2 items-center">
-                                        <input type="checkbox" className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
+                                        <input
+                                            type="checkbox" 
+                                            name='company' 
+                                            checked={checkedList.includes(type)}
+                                            value={type} 
+                                            onChange={handleSelect}
+                                            className="checkbox checkbox-success border-gray-400 w-5 h-5 rounded-md " />
                                         <p>{capitalize(type)} ({count})</p>
                                     </div>
                                 ))
@@ -211,97 +253,90 @@ const JobSection = () => {
                     <h3 className="text-[18px]">Popular in <span className="text-[#007456] font-semibold ">Bangladesh</span></h3>
                     <hr className="text-[#93c0b4] mt-2 mb-4" />
                     <div className="text-[#003D20] grid grid-cols-1 gap-3 " >
-                        <div className="flex items-center gap-3">
+                        <Link to={'https://appscode.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer ">
                             <img src="../../public/company_logo/2.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">AppsCode Inc.</p>
                                 <p className="text-[14px] text-clr2 ">26 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://www.brac.net/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/3.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">BRAC</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">22 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://www.appifylab.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/1.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Appifylab</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">18 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://therapbd.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/4.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Therap BD Ltd.</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">16 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://brainstation-23.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/7.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Brain Station 23</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">13 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://chorcha.net/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
+                            <img src="../../public/company_logo/16.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <div>
+                                <p className="font-medium">Chorcha</p>
+                                <p className="text-[14px] text-clr2 ">8 Jobs</p>
+                            </div>
+                        </Link>
+                        <Link to={'https://www.craftsmensoftware.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/8.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Craftsmen</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">4 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://selisegroup.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/5.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 border border-[#93c0b4]" />
                             <div>
                                 <p className="font-medium">SELISE Group</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">4 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://www.robi.com.bd/en'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/9.jfif" alt="logo2" className="w-8 h-8 scale1  " />
                             <div>
                                 <p className="font-medium">Robi Axiata PLC.</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">3 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <img src="../../public/company_logo/10.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
-                            <div>
-                                <p className="font-medium">Bybit</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <img src="../../public/company_logo/11.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
-                            <div>
-                                <p className="font-medium">Field Nation</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <img src="../../public/company_logo/12.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
-                            <div>
-                                <p className="font-medium">foodpanda</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
-                            </div>
-                        </div>
-                        <div className="flex items-center gap-3">
+                        </Link>
+                        <Link to={'https://www.aarong.com/bgd/landing-page'} target='_blank' className="flex items-center gap-3 cursor-pointer">
                             <img src="../../public/company_logo/13.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Arong</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="text-[14px] text-clr2 ">2 Jobs</p>
                             </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <img src="../../public/company_logo/14.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                        </Link>
+                        <Link to={'https://fieldnation.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
+                            <img src="../../public/company_logo/11.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
-                                <p className="font-medium">Bitget</p>
-                                <p className="text-[14px] text-clr2 ">26 Jobs</p>
+                                <p className="font-medium">Field Nation</p>
+                                <p className="text-[14px] text-clr2 ">2 Jobs</p>
                             </div>
-                        </div>
+                        </Link>
+                        <Link to={'https://www.foodpanda.com.bd/restaurants/new?lng=90.414964&lat=23.803782&vertical=restaurants'} target='_blank' className="flex items-center gap-3 cursor-pointer">
+                            <img src="../../public/company_logo/12.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <div>
+                                <p className="font-medium">foodpanda</p>
+                                <p className="text-[14px] text-clr2 ">1 Jobs</p>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

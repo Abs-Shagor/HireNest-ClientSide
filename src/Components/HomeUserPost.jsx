@@ -11,12 +11,6 @@ const HomeUserPost = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    function handlePhotoUpload() {
-        toast.warning('This feature is under development.')
-    }
-
-
-
     return (
         <div className=' bg-green-50 border border-[#93c0b4] sm:border-white shadow2 rounded-2xl p-3 sm:p-5'>
             <div className="flex gap-2 sm:gap-3">
@@ -35,7 +29,7 @@ const HomeUserPost = () => {
                 </div>
                 <input onClick={() => navigate('/post')} type="text" name="post" id="" readOnly placeholder="Start a post" className="w-full bg-white rounded-full outline outline-gray-300 placeholder-[#007456] text-[14px] sm:text-[16px] hover:bg-green-50 hover:outline-gray-400 font-semibold cursor-pointer px-3  sm:px-5" />
             </div>
-            <div onClick={handlePhotoUpload} className='flex justify-evenly text-[14px] sm:text-[16px] text-[#007456] mt-5'>
+            <div onClick={() => navigate('/post')} className='flex justify-evenly text-[14px] sm:text-[16px] text-[#007456] mt-5'>
                 <div className='flex gap-2 items-center cursor-pointer '>
                     <IoMdPhotos className='h-5 w-5' />
                     <p>Photo</p>
