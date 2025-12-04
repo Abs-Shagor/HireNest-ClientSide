@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
 
 
 
@@ -10,6 +12,13 @@ const Signup = () => {
     const navigate = useNavigate();
     const { signup, signinWithGoogle, signinWithGithub, setUserInformation, verifyEmail } = useContext(AuthContext);
 
+    // sending data to serverside 
+    const mutation = useMutation({
+        mutationFn: async (userData) => {
+            const res = await axios.post('http://localhost:3000/adduser', userData);
+            return res.data;
+        }
+    });
 
     // Sign up with Email and password
     function handleSubmit(event) {
@@ -49,24 +58,22 @@ const Signup = () => {
                         verifyEmail()
                             .then(() => {
                                 toast.success('Verification Email Sent!');
-                                setTimeout(() => navigate('/signupVerificationPage'), 500);
+                                setTimeout(() => navigate('/signupVerificationPage'), 100);
                                 event.target.reset();
                             });
 
-                        // set the user information in firebase to use them leter.
-                        const userInfo = {
-                            displayName: name,
+                        // sending user information in database(mongoDB)
+                        const userData = {
+                            fullName: name,
                             email: email,
                             password: password,
-                            photoURL: null,
+                            position: 'Job Seeker',
+                            phone: '+880 xxxxxxxx',
+                            address: 'Set your address',
+                            photoURL: "https://media.istockphoto.com/id/1173458627/photo/abstract-digital-human-face.jpg?s=612x612&w=0&k=20&c=nnBcBMJLihUDfXWqBpyUEOgnprSEFCflmjoqY9tGzHM=",
                         }
-                        setUserInformation(userInfo)
-                            .then(res => {
-                                // console.log('User information has been set successfully!')
-                            })
-                            .catch(error => {
-                                // console.log('The user information has not been set.')
-                            })
+                        mutation.mutate(userData);
+
                     })
                     .catch(error => {
                         // console.log(error);
@@ -81,7 +88,7 @@ const Signup = () => {
             }
         }
         else {
-            toast.error('Invalid Credentials!');
+            toast.warning('Please accept Terms of Service.');
         }
     };
 
@@ -176,7 +183,7 @@ const Signup = () => {
 
                     <div className="flex items-center text-[14px]">
                         <input type="checkbox" name="checkbox" className="w-4 h-4 text-blue-600 rounded" />
-                        <span className="ml-2 text-[#48928e]">I agree <Link className='underline'>Terms of Service</Link> </span>
+                        <span className="ml-2 text-[#48928e]">I agree <Link to={'/termsAndService'} className='underline hover:text-[#016147] '>Terms of Service</Link> </span>
                     </div>
 
                     <button

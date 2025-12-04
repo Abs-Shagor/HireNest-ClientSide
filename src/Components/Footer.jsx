@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const Footer = () => {
     function handleSubscribe() {
-        toast.warning('Subscription method coming soon...')
+        toast.warning('This feature is under development.')
     }
 
     return (

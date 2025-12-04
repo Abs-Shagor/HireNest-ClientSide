@@ -23,6 +23,9 @@ import JobSection from './Components/JobSection';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import JobDetails from './Components/JobDetails';
 import SearchOptionsPage from './Components/SearchOptionsPage';
+import ForgotPasswordPage1 from './Components/ForgotPasswordPage1';
+import ForgotPasswordPage2 from './Components/ForgotPasswordPage2';
+import TermsAndService from './Components/TermsAndService';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -72,6 +75,14 @@ const router = createBrowserRouter([
         element: <SignupVerificationPage></SignupVerificationPage>
       },
       {
+        path: '/forgotPasswordPage1',
+        element: <ForgotPasswordPage1></ForgotPasswordPage1>
+      },
+      {
+        path: '/forgotPasswordPage2',
+        element: <ForgotPasswordPage2></ForgotPasswordPage2>
+      },
+      {
         path: '/profile',
         element: <PrivateRoute1> <Profile></Profile> </PrivateRoute1>
       },
@@ -82,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: '/searchedOptions',
         element: <SearchOptionsPage></SearchOptionsPage>
+      },
+      {
+        path: '/termsAndService',
+        element: <TermsAndService></TermsAndService>
       }
     ]
   }

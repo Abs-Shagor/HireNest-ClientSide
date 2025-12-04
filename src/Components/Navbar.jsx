@@ -16,6 +16,7 @@ const Navbar = () => {
 
     // 
     const { user, signout } = useContext(AuthContext);
+    const {userData} = useContext(DataContext);
     // console.log(user?.photoURL);
     // to show by which method(provider: google, github, email/pass etc) the user login
     let providerName = user?.providerData[0]?.providerId || "";
@@ -71,9 +72,9 @@ const Navbar = () => {
                                         <Link to={'/'} className="hidden lg:block text-[#003D20] font-semibold max-w-[150px] truncate ml-2"><span>Hello, </span > {user?.displayName?.split(' ')[0]}</Link>
                                         <div className="bg-green-50 border border-[#007456] shadow2 rounded-full cursor-pointer ">
                                             {
-                                                user?.photoURL ? (
+                                                user? (
                                                     <div className='p-0.5'>
-                                                        <img src={user.photoURL} alt="img" className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
+                                                        <img src={user.photoURL || userData.photoURL} alt="img" className="w-8 h-8 rounded-full" referrerPolicy="no-referrer" />
                                                     </div>
                                                 ) : (
                                                     <div className='p-1'>
@@ -84,9 +85,10 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                     <ul tabIndex="-1" className="bg-[#007456] text-white font-semibold dropdown-content menu  rounded-box z-1 w-52 p-2 shadow-sm mt-4">
-                                        <li className='hover:bg-[#47b396] rounded-md'><Link to={'/profile'}>Profile</Link></li>
-                                        <li className='hover:bg-[#47b396] rounded-md'><a>Statistics</a></li>
-                                        <li className='hover:bg-[#47b396] rounded-md'><a>Settings</a></li>
+                                        <li className='hover:bg-[#47b396] rounded-md'><Link to={'/profile'}>User Profile</Link></li>
+                                        <li className='hover:bg-[#47b396] rounded-md'><Link to={'/forgotPasswordPage1'}>Change Password</Link></li>
+                                        <li className='hover:bg-[#47b396] rounded-md'><a>Job Statistics</a></li>
+                                        <li className='hover:bg-[#47b396] rounded-md'><a>Account Settings</a></li>
                                         <li className='hover:bg-[#47b396] rounded-md'><Link to={'/'} onClick={handleLogout} className=" ">Logout</Link></li>
                                     </ul>
                                 </div>

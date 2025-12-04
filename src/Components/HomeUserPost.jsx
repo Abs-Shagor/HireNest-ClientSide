@@ -6,9 +6,11 @@ import { FaVideo } from "react-icons/fa";
 import { RxActivityLog } from "react-icons/rx";
 import { toast } from 'react-toastify';
 import { FaUser } from "react-icons/fa";
+import { DataContext } from '../Providers/DataProvider';
 
 const HomeUserPost = () => {
     const { user } = useContext(AuthContext);
+    const {userData} = useContext(DataContext);
     const navigate = useNavigate();
 
     return (
@@ -16,9 +18,9 @@ const HomeUserPost = () => {
             <div className="flex gap-2 sm:gap-3">
                 <div onClick={() => navigate('/profile')} className='border border-gray-300 shadow2 rounded-full cursor-pointer'>
                     {
-                        user?.photoURL ? (
+                        user? (
                             <div className='p-0.5'>
-                                <img src={user.photoURL} alt="img" className="w-12 rounded-full" referrerPolicy="no-referrer" />
+                                <img src={user.photoURL || userData.photoURL} alt="img" className="w-12 h-11 rounded-full" referrerPolicy="no-referrer" />
                             </div>
                         ) : (
                             <div className='p-1'>
