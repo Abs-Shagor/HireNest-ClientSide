@@ -10,7 +10,7 @@ import { DataContext } from '../Providers/DataProvider';
 
 const HomeUserPost = () => {
     const { user } = useContext(AuthContext);
-    const {userData} = useContext(DataContext);
+    const { userData } = useContext(DataContext);
     const navigate = useNavigate();
 
     return (
@@ -18,15 +18,15 @@ const HomeUserPost = () => {
             <div className="flex gap-2 sm:gap-3">
                 <div onClick={() => navigate('/profile')} className='border border-gray-300 shadow2 rounded-full cursor-pointer'>
                     {
-                        user? (
+                        (user?.photoURL || userData?.photoURL) ?
                             <div className='p-0.5'>
-                                <img src={user.photoURL || userData.photoURL} alt="img" className="w-12 h-11 rounded-full" referrerPolicy="no-referrer" />
+                                <img src={user?.photoURL || userData?.photoURL} alt="img" className="w-12 h-11 rounded-full" referrerPolicy="no-referrer" />
                             </div>
-                        ) : (
+                            :
                             <div className='p-1'>
                                 <FaUser className='text-[#003D20] w-8 h-8 rounded-full ' />
                             </div>
-                        )
+
                     }
                 </div>
                 <input onClick={() => navigate('/post')} type="text" name="post" id="" readOnly placeholder="Start a post" className="w-full bg-white rounded-full outline outline-gray-300 placeholder-[#007456] text-[14px] sm:text-[16px] hover:bg-green-50 hover:outline-gray-400 font-semibold cursor-pointer px-3  sm:px-5" />

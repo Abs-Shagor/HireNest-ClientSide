@@ -26,6 +26,7 @@ import SearchOptionsPage from './Components/SearchOptionsPage';
 import ForgotPasswordPage1 from './Components/ForgotPasswordPage1';
 import ForgotPasswordPage2 from './Components/ForgotPasswordPage2';
 import TermsAndService from './Components/TermsAndService';
+import JobStatics from './Components/JobStatics';
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
       {
         path: '/termsAndService',
         element: <TermsAndService></TermsAndService>
+      },
+      {
+        path: '/jobStatics',
+        element: <PrivateRoute1><JobStatics></JobStatics></PrivateRoute1>
       }
     ]
   }

@@ -3,13 +3,17 @@ import { AuthContext } from '../Providers/AuthProvider';
 import { GrValidate } from "react-icons/gr";
 import Swal from 'sweetalert2';
 import { FaEdit } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUserEdit } from "react-icons/fa";
 import { DataContext } from '../Providers/DataProvider';
 import { toast } from 'react-toastify';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-
+import { FaUser } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
+import { GiArchiveRegister } from "react-icons/gi";
 
 const Profile = () => {
     // To show the upperside of the page we use the below method
@@ -18,6 +22,7 @@ const Profile = () => {
     }, []);
 
     //
+    const navigate = useNavigate();
     const { user, setUserInformation } = useContext(AuthContext);
     const { userData, userLoading } = useContext(DataContext);
     // console.log(userData);
@@ -76,13 +81,18 @@ const Profile = () => {
         <div className='flex flex-col md:flex-row gap-5 lg:gap-10 my-10 '>
             <div className='max-w-[360px] md:max-w-[330px] w-full mx-auto flex flex-col gap-2 items-center  bg-green-50 border border-[#93c0b4] sm:border-white shadow2 rounded-2xl p-5'>
                 <div onClick={handleProfilePicture} className="border  border-[#007456] shadow2 rounded-full p-0.5">
-                    <img src={user?.photoURL || userData?.photoURL} alt="img" className="w-20 h-20 rounded-full" referrerPolicy="no-referrer" />
+                    {
+                        (user?.photoURL || userData?.photoURL) ?
+                            <img src={user?.photoURL || userData?.photoURL} alt="img" className="w-20 h-20 rounded-full" referrerPolicy="no-referrer" />
+                            :
+                            <FaUser className='text-[#003D20] w-20 h-20 rounded-full p-1' />
+                    }
                 </div>
                 <div>
                     <h3 className=' text-[20px] text-[#003D20] text-center font-semibold flex items-center gap-2'><span>{userData?.fullName || 'Full Name'}</span><GrValidate /></h3>
-                    <p className='text-[#48928e] text-center'>{userData?.position || 'Job Seeker'}</p>
+                    <p className='text-[#48928e] text-[14px] text-center'>{userData?.position || 'Job Seeker'}</p>
                 </div>
-                <div className='flex justify-evenly w-full mt-3'>
+                <div className='flex justify-evenly w-full mt-1 text-[14px]'>
                     <div className='flex flex-col items-center text-[#007456]'>
                         <p className='font-bold'>0</p>
                         <p className=''>Followers</p>
@@ -92,24 +102,38 @@ const Profile = () => {
                         <p className=''>Following</p>
                     </div>
                 </div>
-                <hr className="text-[#93c0b4] w-full my-3" />
-                <div className='flex gap-5 justify-between items-center'>
-                    <div className='text-[#003D20] font-semibold space-y-1 '>
-                        <p>Last Seen:</p>
-                        <p>Phone:</p>
-                        <p>Email:</p>
-                        <p>Register:</p>
-                        <p>Address:</p>
+                <hr className="text-[#93c0b4] w-full my-2" />
+
+                <div className="grid gap-2 items-center">
+                    <div className="flex items-center gap-3">
+                        <div className='p-2 shadow1 rounded-lg bg-[#007456]'><FaPhoneAlt className="w-4 h-4 text-white" /></div>
+                        <div className='text-[13px] w-[250px] sm:w-[220px]'>
+                            <p className='text-[#007456] font-semibold'>Phone</p>
+                            <p className=" text-[#48928e] truncate ">{userData?.phone || '+880 XXXXXXXX'}</p>
+                        </div>
                     </div>
-                    <div className='text-[#48928e] space-y-1 '>
-                        <p>Online</p>
-                        <p className='max-w-[190px] truncate '>{userData?.phone || '+880 XXXXXXXX'}</p>
-                        <p className='max-w-[190px] truncate '>{userData?.email || user.email}</p>
-                        <p>{RegisterDate}</p>
-                        <p className='max-w-[190px] truncate '>{userData?.address || 'Set your address'}</p>
+                    <div className="flex items-center gap-3">
+                        <div className='p-2 shadow1 rounded-lg bg-[#007456]'><MdEmail className="w-4 h-4 text-white" /></div>
+                        <div className='text-[13px] w-[250px] sm:w-[220px]'>
+                            <p className='text-[#007456] font-semibold'>Email</p>
+                            <p className=" text-[#48928e] truncate ">{userData?.email || user?.email}</p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className='p-2 shadow1 rounded-lg bg-[#007456]'><FaLocationDot className="w-4 h-4 text-white" /></div>
+                        <div className='text-[13px] w-[250px] sm:w-[220px]'>
+                            <p className='text-[#007456] font-semibold'>Address</p>
+                            <p className=" text-[#48928e] truncate ">{userData?.address || 'Your address'}</p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <div className='p-2 shadow1 rounded-lg bg-[#007456]'><GiArchiveRegister className="w-4 h-4 text-white" /></div>
+                        <div className='text-[13px] w-[250px] sm:w-[220px]'>
+                            <p className='text-[#007456] font-semibold'>Register On</p>
+                            <p className=" text-[#48928e] truncate ">{RegisterDate || 'loading...'}</p>
+                        </div>
                     </div>
                 </div>
-
             </div>
             <div className='flex-1 bg-green-50 border border-[#93c0b4] sm:border-white shadow2 rounded-2xl'>
 
@@ -126,7 +150,7 @@ const Profile = () => {
                     <div className="grid sm:grid-cols-2 gap-5">
                         <div>
                             <p className="text-[#007456] mb-2">Full Name</p>
-                            <input type="text" name="name" placeholder="Enter name"  required defaultValue={userData?.fullName || 'Set your name'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="name" placeholder="Enter name" required defaultValue={userData?.fullName || 'Full name'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Position</p>
@@ -146,12 +170,14 @@ const Profile = () => {
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Address</p>
-                            <input type="text" name="address" placeholder="Enter Address" required defaultValue={userData?.address || 'Set your address'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="text" name="address" placeholder="Enter Address" required defaultValue={userData?.address || 'Your address'} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
-
-
                     </div>
-                    <button className="max-w-[200px] btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-full block ml-auto"> Save Changes </button>
+
+                    <div className='flex items-center gap-2 sm:gap-3'>
+                        <button type='button' onClick={() => navigate('/')} className="max-w-[200px] btn bg-green-50 hover:bg-[#007456] text-[#016147] shadow-[0_1px_2px_#007456] hover:text-white rounded-3xl block ml-auto sm:mt-5">Cancel</button>
+                        <button className="max-w-[200px] btn bg-[#007456] hover:bg-[#016147] text-white shadow-[0_1px_2px_#007456] hover:text-white rounded-full block  sm:mt-5"> Save Changes </button>
+                    </div>
                 </form>
             </div>
         </div>
