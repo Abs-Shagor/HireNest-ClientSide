@@ -46,7 +46,7 @@ const Navbar = () => {
                             }
                         </div>
                         <Link to={'/'} className='hidden md:block'>
-                            <img className='w-7 lg:w-9 rounded-sm  ' src="../../public/HN3.png" alt="" />
+                            <img className='w-7 lg:w-9 rounded-sm  ' src="HN3.png" alt="" />
                         </Link>
                         <Link to={'/'} onClick={() => setCheckedList([])} className='text-[22px] lg:text-[30px] text-[#003D20] font-semibold '>HireNest</Link>
                         {/* <input type="text" name="" id="" placeholder='Search' className='border border-[#007456] px-3 py-1 rounded-full' /> */}
