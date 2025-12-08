@@ -19,6 +19,14 @@ const BookDetails = () => {
     const book_Id = param.bookId;
     const book = books.find(b => b.bookId == book_Id);
 
+    //
+    function handleMarkAsRead() {
+        toast.success("Marked as read.")
+    }
+    function handleAddToWhishlist() {
+        toast.success("Added.")
+    }
+
 
     return (
         <div>
@@ -64,8 +72,8 @@ const BookDetails = () => {
                                 </div>
                             </div>
                             <div className='flex gap-4 justify-between mt-5 '>
-                                <button className=' btn bg-[#edf4f4] border border-[#93c0b4] text-[#007456] hover:text-white hover:bg-[#007456] shadow-2xl px-6'>Mark as Read</button>
-                                <button className=' btn bg-[#edf4f4] border border-[#93c0b4] text-[#007456] hover:text-white hover:bg-[#007456] shadow-2xl px-6'>Add to Wishlist</button>
+                                <button onClick={handleMarkAsRead} className=' btn bg-[#edf4f4] border border-[#93c0b4] text-[#007456] hover:text-white hover:bg-[#007456] shadow-2xl px-6'>Mark as Read</button>
+                                <button onClick={handleAddToWhishlist} className=' btn bg-[#edf4f4] border border-[#93c0b4] text-[#007456] hover:text-white hover:bg-[#007456] shadow-2xl px-6'>Add to Wishlist</button>
                             </div>
                         </div>
                     </div>

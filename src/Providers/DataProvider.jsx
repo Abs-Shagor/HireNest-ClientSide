@@ -6,6 +6,8 @@ import { AuthContext } from './AuthProvider';
 /* eslint-disable react-refresh/only-export-components */
 export const DataContext = createContext(null);
 
+// Serverside Domain (vercel)
+const serverDomain = "https://hire-nest-server-side.vercel.app/";
 
 const DataProvider = ({ children }) => {
   const [books, setBooks] = useState([]);
@@ -14,14 +16,16 @@ const DataProvider = ({ children }) => {
     fetch('/BooksAPI.json')
       .then(res => res.json())
       .then(data => setBooks(data))
-      .catch(err => console.error(err));
+      .catch(err => {
+        // console.error(err)
+      });
   }, []);
 
   // fetching user Data 
   const { data: usersData, isLoading: userLoading, isError: usersError } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/users');
+      const res = await axios.get(`${serverDomain}users`);
       return res.data;
     },
   });
@@ -34,7 +38,7 @@ const DataProvider = ({ children }) => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['jobs'],
     queryFn: async () => {
-      const res = await axios.get('http://localhost:3000/jobs');
+      const res = await axios.get(`${serverDomain}jobs`);
       return res.data;
     },
   });
@@ -44,8 +48,9 @@ const DataProvider = ({ children }) => {
 
   const [searchedOption, setSearchedOption] = useState('');
   const [checkedList, setCheckedList] = useState([]);
+  const [savedJob, setSavedJob] = useState([]);
 
-  const All_data = { books, jobs, privateJobs, govtJobs, isLoading, isError, searchedOption, setSearchedOption, checkedList, setCheckedList, userData, userLoading };
+  const All_data = { books, jobs, privateJobs, govtJobs, isLoading, isError, searchedOption, setSearchedOption, checkedList, setCheckedList, userData, userLoading, savedJob, setSavedJob, serverDomain };
 
   return (
     <DataContext.Provider value={All_data}>

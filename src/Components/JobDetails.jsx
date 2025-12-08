@@ -36,7 +36,7 @@ const JobDetails = () => {
                     </div>
                 </div>
                 <div className='flex items-center gap-3 sm:gap-5 mt-5 sm:mt-10'>
-                    <img src={`http://localhost:3000${job?.company_logo}`} alt="img" className='w-15 h-15 sm:w-20 sm:h-20 rounded-sm  scale1 ' />
+                    <img src={job?.company_logo} alt="img" className='w-15 h-15 sm:w-20 sm:h-20 rounded-sm  scale1 ' />
                     <div className='flex flex-col gap-3 sm:gap-5'>
                         <div className='flex items-center gap-3'>
                             <h3 className='text-[#007456]  font-medium'>{job?.company_name}</h3>
@@ -57,7 +57,7 @@ const JobDetails = () => {
                 {
                     job?.job_category === 'govt' ?
                         <iframe
-                            src={`http://localhost:3000${job?.pdf_file}#view=fitH`}
+                            src={`${job?.pdf_file}#view=fitH`}
                             width="100%"
                             height="650px"
                             title="Job Description PDF"

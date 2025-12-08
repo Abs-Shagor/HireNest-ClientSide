@@ -1,21 +1,20 @@
 import { useEffect, useRef } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { SlCup } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { IoBagAddSharp } from "react-icons/io5";
-import { MdPublish } from 'react-icons/md';
-import { AiOutlineUpload } from 'react-icons/ai';
 import { IoBagHandleSharp } from "react-icons/io5";
 
 import axios from 'axios';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useState } from "react";
+import { useContext } from "react";
+import { DataContext } from "../Providers/DataProvider";
 
 const PostJob = () => {
     const navigate = useNavigate();
     const formRef = useRef();
     const queryClient = useQueryClient();
+    const {serverDomain} = useContext(DataContext);
 
     // To show the upperside of the page we use the below method
     useEffect(() => {
@@ -45,7 +44,7 @@ const PostJob = () => {
     // sending data to serverside 
     const mutation = useMutation({
         mutationFn: async (formData) => {
-            const res = await axios.post('http://localhost:3000/addjob', formData, {
+            const res = await axios.post(`${serverDomain}addjob`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'  // Important for file upload
                 }

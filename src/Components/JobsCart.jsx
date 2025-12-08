@@ -1,11 +1,14 @@
 import { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { CiBookmark } from "react-icons/ci";
+import { FaBookmark } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { DataContext } from '../Providers/DataProvider';
 import { useLocation } from 'react-router-dom';
 import { TiArrowSortedDown } from "react-icons/ti";
 import { IoIosSearch } from "react-icons/io";
+import { toast } from 'react-toastify';
+import { AuthContext } from '../Providers/AuthProvider';
 
 
 const JobsCart = () => {
@@ -117,6 +120,27 @@ const JobsCart = () => {
         setJobss(sortedJobs);
     }
 
+    // handling save job
+    const {user} = useContext(AuthContext);
+    const {savedJob, setSavedJob} = useContext(DataContext);
+    function handleSaveJob(id) {
+        // console.log(id);
+        if(user) {
+            if(savedJob.includes(id)) {
+                const filteredJob = savedJob.filter(item => item!==id);
+                setSavedJob(filteredJob);
+                toast.warning("Removed from saved.")
+            }
+            else {
+                setSavedJob([...savedJob, id]);
+                toast.success("Job saved successfully.")
+            }
+        }
+        else {
+            toast.warning('Please login to save jobs.')
+        }
+    }
+
 
     if (isLoading) {
         return (
@@ -155,10 +179,16 @@ const JobsCart = () => {
                                 <div key={job._id} className='border border-[#93c0b4] sm:border-white shadow2 rounded-xl'>
                                     <div className='relative flex gap-3 sm:gap-5 p-3 sm:p-5'>
                                         <div>
-                                            <img src={`http://localhost:3000${job.company_logo}`} alt="img" className='h-10 w-10 sm:h-15 sm:w-15 rounded-sm shadow2 scale1 ' />
+                                            <img src={job.company_logo} alt="img" className='h-10 w-10 sm:h-15 sm:w-15 rounded-sm shadow2 scale1 ' />
                                         </div>
-                                        <div className='absolute right-5 top-4 flex gap-1 items-center text-clr2'>
-                                            <CiBookmark />
+                                        <div onClick={() => handleSaveJob(job._id)} className='absolute right-5 top-4 flex gap-1 items-center text-clr2 cursor-pointer '>
+                                            {
+                                                savedJob.includes(job._id) ?
+                                                <FaBookmark  />
+                                                :
+                                                <CiBookmark  />
+                                                
+                                            }
                                             <p className='text-[14px]'>Save Job</p>
                                         </div>
                                         <div className='flex-1 grid gap-5'>

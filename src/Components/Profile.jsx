@@ -24,7 +24,7 @@ const Profile = () => {
     //
     const navigate = useNavigate();
     const { user, setUserInformation } = useContext(AuthContext);
-    const { userData, userLoading } = useContext(DataContext);
+    const { userData, userLoading, serverDomain } = useContext(DataContext);
     // console.log(userData);
     const RegisterDate = new Date(user.metadata.creationTime).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' });
 
@@ -50,7 +50,7 @@ const Profile = () => {
             });
 
             // Update MongoDB
-            const res = await axios.put(`http://localhost:3000/users/${user.email}`, {
+            const res = await axios.put(`${serverDomain}users/${user.email}`, {
                 fullName: updatedData.name,
                 position: updatedData.position,
                 phone: updatedData.phone,
@@ -116,7 +116,7 @@ const Profile = () => {
                         <div className='p-2 shadow1 rounded-lg bg-[#007456]'><MdEmail className="w-4 h-4 text-white" /></div>
                         <div className='text-[13px] w-[250px] sm:w-[220px]'>
                             <p className='text-[#007456] font-semibold'>Email</p>
-                            <p className=" text-[#48928e] truncate ">{userData?.email || user?.email}</p>
+                            <p className=" text-[#48928e] truncate ">{userData?.email || user?.email || "hide@gmail.com" }</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -158,7 +158,7 @@ const Profile = () => {
                         </div>
                         <div>
                             <p className="text-[#007456] mb-2">Email</p>
-                            <input type="email" name="email" placeholder="Enter Email" required readOnly defaultValue={userData?.email || user.email} className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
+                            <input type="email" name="email" placeholder="Enter Email" required readOnly defaultValue={userData?.email || user.email || "hide@gmail.com" } className="w-full bg-white text-[14px] text-[#003D20] shadow-[0_0_1px_#9f9494] rounded-sm outline-none focus:ring-1 focus:ring-[#9f9494] transition placeholder-gray-400 p-2" />
                         </div>
                         <div>
                             <Link to={'/forgotPasswordPage1'} className="text-[#007456] mb-2 flex items-center gap-1">Password<FaEdit className='text-[#003D20] ' /></Link>

@@ -270,7 +270,7 @@ const JobStatics = () => {
                                             <div key={job._id} className='border border-[#93c0b4] sm:border-white shadow2 rounded-xl'>
                                                 <div className='relative flex gap-3 sm:gap-5 p-3 sm:p-5'>
                                                     <div>
-                                                        <img src={`http://localhost:3000${job.company_logo}`} alt="img" className='h-10 w-10 sm:h-15 sm:w-15 rounded-sm shadow2 scale1 ' />
+                                                        <img src={job.company_logo} alt="img" className='h-10 w-10 sm:h-15 sm:w-15 rounded-sm shadow2 scale1 ' />
                                                     </div>
                                                     <div className='absolute right-5 top-4 flex gap-1 items-center text-clr2'>
                                                         <CiBookmark />

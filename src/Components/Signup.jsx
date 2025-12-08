@@ -5,17 +5,19 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
+import { DataContext } from '../Providers/DataProvider';
 
 
 
 const Signup = () => {
     const navigate = useNavigate();
     const { signup, signinWithGoogle, signinWithGithub, setUserInformation, verifyEmail } = useContext(AuthContext);
+    const {serverDomain} = useContext(DataContext);
 
     // sending data to serverside 
     const mutation = useMutation({
         mutationFn: async (userData) => {
-            const res = await axios.post('http://localhost:3000/adduser', userData);
+            const res = await axios.post(`${serverDomain}adduser`, userData);
             return res.data;
         }
     });
@@ -71,9 +73,9 @@ const Signup = () => {
                             phone: '+880 xxxxxxxx',
                             address: 'Set your address',
                             photoURL: "https://media.istockphoto.com/id/1173458627/photo/abstract-digital-human-face.jpg?s=612x612&w=0&k=20&c=nnBcBMJLihUDfXWqBpyUEOgnprSEFCflmjoqY9tGzHM=",
+                            savedJobs: []
                         }
                         mutation.mutate(userData);
-
                     })
                     .catch(error => {
                         // console.log(error);
@@ -98,7 +100,6 @@ const Signup = () => {
         signinWithGoogle()
             .then(res => {
                 toast.success('Login Successful!');
-                // setTimeout(() => navigate('/home'), 1000);
             })
             .catch(error => {
                 toast.error('Invalid Credentials!');
@@ -110,7 +111,6 @@ const Signup = () => {
         signinWithGithub()
             .then(res => {
                 toast.success('Login Successful!');
-                // setTimeout(() => navigate('/home'), 1000);
             })
             .catch(error => {
                 toast.error('Invalid Credentials!');
