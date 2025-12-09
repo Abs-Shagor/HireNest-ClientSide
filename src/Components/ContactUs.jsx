@@ -42,7 +42,7 @@ const ContactUs = () => {
             <div className='bg-green-50 md:max-w-[350px] lg:max-w-[400px] grid gap-5 border-[#93c0b4] sm:border-white shadow2 p-5 rounded-2xl'>
                 <div>
                     <div className="flex items-center gap-1 mb-2">
-                        <img src="HN202.png" alt="" className='w-8' />
+                        <img src="/HN202.png" alt="" className='w-8' />
                         <h3 className=' text-[24px] text-[#003D20] font-semibold'>HireNest</h3>
                     </div>
                     <p className='  text-clr2 text-justify max-w-[400px]  '>Find your dream job or the perfect candidate easily with Hirenest — fast, simple, and reliable.</p>

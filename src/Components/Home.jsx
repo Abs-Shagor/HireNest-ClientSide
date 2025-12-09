@@ -25,10 +25,10 @@ const Home = () => {
                 <div className='flex items-center gap-1'>
                     <p className='text-clr2 '>{jobs.length}+ Jobs</p>
                     <div className='flex -space-x-3'>
-                        <img src="company_logo/1.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
-                        <img src="company_logo/2.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
-                        <img src="company_logo/3.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
-                        <img src="company_logo/4.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
+                        <img src="/company_logo/1.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
+                        <img src="/company_logo/2.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
+                        <img src="/company_logo/3.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
+                        <img src="/company_logo/4.jfif" alt="" className=' w-7 h-7 rounded-full border-2 border-white' />
                     </div>
                 </div>
                 <div className="relative w-full mt-3">
@@ -56,55 +56,55 @@ const Home = () => {
 
             <Marquee pauseOnHover={true} speed={50} className="text-clr3 my-10" >
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/2.jfif" alt="logo2" className="w-5 h-5 " />
+                    <img src="/company_logo/2.jfif" alt="logo2" className="w-5 h-5 " />
                     <p>AppsCode Inc.</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/3.jfif" alt="logo3" className="w-5 h-5 " />
+                    <img src="/company_logo/3.jfif" alt="logo3" className="w-5 h-5 " />
                     <p>BRAC</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/1.jfif" alt="logo1" className="w-5 h-5 " />
+                    <img src="/company_logo/1.jfif" alt="logo1" className="w-5 h-5 " />
                     <p>Appifylab</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/4.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/4.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Therap BD Ltd.</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/7.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/7.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Brain Station 23</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/8.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/8.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Craftsmen</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/5.jfif" alt="logo1" className=" h-5 border border-[#007456] " />
+                    <img src="/company_logo/5.jfif" alt="logo1" className=" h-5 border border-[#007456] " />
                     <p>SELISE Group</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/9.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/9.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Robi Axiata PLC.</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/10.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/10.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Bybit</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/11.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/11.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Field Nation</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/12.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/12.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>foodpanda</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/13.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/13.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>BRAC Arong</p>
                 </div>
                 <div className="flex items-center gap-1 mr-7">
-                    <img src="company_logo/14.jfif" alt="logo4" className="w-5 h-5 " />
+                    <img src="/company_logo/14.jfif" alt="logo4" className="w-5 h-5 " />
                     <p>Bitget</p>
                 </div>
             </Marquee>

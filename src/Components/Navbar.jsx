@@ -46,7 +46,7 @@ const Navbar = () => {
                             }
                         </div>
                         <Link to={'/'} className='hidden md:block'>
-                            <img className='w-7 lg:w-9 rounded-sm  ' src="HN3.png" alt="img" />
+                            <img className='w-7 lg:w-9 rounded-sm  ' src="/HN3.png" alt="Logo" />
                         </Link>
                         <Link to={'/'} onClick={() => setCheckedList([])} className='text-[22px] lg:text-[30px] text-[#003D20] font-semibold '>HireNest</Link>
                         {/* <input type="text" name="" id="" placeholder='Search' className='border border-[#007456] px-3 py-1 rounded-full' /> */}
@@ -69,7 +69,7 @@ const Navbar = () => {
                             (user && (user.emailVerified || providerName === "google.com" || providerName === 'github.com')) ?
                                 <div className="dropdown dropdown-end ">
                                     <div tabIndex="0" role="button" className='flex items-center gap-2' >
-                                        <Link to={'/'} className="hidden lg:block text-[#003D20] font-semibold max-w-[150px] truncate ml-2"><span>Hello, </span > {user?.displayName?.split(' ')[0]}</Link>
+                                        <Link to={'/'} className="hidden lg:block text-[#003D20] font-semibold max-w-[150px] truncate ml-2"><span>Hello, </span > {user?.displayName?.split(' ')[0] || userData?.fullName}</Link>
                                         <div className="bg-green-50 border border-[#007456] shadow2 rounded-full cursor-pointer ">
                                             {
                                                 (user?.photoURL || userData?.photoURL) ?

@@ -21,7 +21,7 @@ const JobDetails = () => {
     const job = jobs?.find(job => job._id == param.jobId);
     // console.log(job)
 
-
+    
     return (
         <div>
             <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
@@ -57,10 +57,15 @@ const JobDetails = () => {
                 {
                     job?.job_category === 'govt' ?
                         <iframe
-                            src={`${job?.pdf_file}#view=fitH`}
+                            src={`${job?.pdf_file}#view=FitW`}
                             width="100%"
                             height="650px"
                             title="Job Description PDF"
+                            style={{
+                                border: '1px solid #ddd',
+                                borderRadius: '8px',
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                            }}
                         />
                         :
                         <div>

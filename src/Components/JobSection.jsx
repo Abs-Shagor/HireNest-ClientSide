@@ -254,84 +254,84 @@ const JobSection = () => {
                     <hr className="text-[#93c0b4] mt-2 mb-4" />
                     <div className="text-[#003D20] grid grid-cols-1 gap-3 " >
                         <Link to={'https://appscode.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer ">
-                            <img src="company_logo/2.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/2.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">AppsCode Inc.</p>
                                 <p className="text-[14px] text-clr2 ">26 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://www.brac.net/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/3.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/3.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">BRAC</p>
                                 <p className="text-[14px] text-clr2 ">22 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://www.appifylab.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/1.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/1.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Appifylab</p>
                                 <p className="text-[14px] text-clr2 ">18 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://therapbd.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/4.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/4.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Therap BD Ltd.</p>
                                 <p className="text-[14px] text-clr2 ">16 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://brainstation-23.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/7.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/7.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Brain Station 23</p>
                                 <p className="text-[14px] text-clr2 ">13 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://chorcha.net/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/16.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/16.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Chorcha</p>
                                 <p className="text-[14px] text-clr2 ">8 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://www.craftsmensoftware.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/8.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/8.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Craftsmen</p>
                                 <p className="text-[14px] text-clr2 ">4 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://selisegroup.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/5.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 border border-[#93c0b4]" />
+                            <img src="/company_logo/5.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 border border-[#93c0b4]" />
                             <div>
                                 <p className="font-medium">SELISE Group</p>
                                 <p className="text-[14px] text-clr2 ">4 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://www.robi.com.bd/en'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/9.jfif" alt="logo2" className="w-8 h-8 scale1  " />
+                            <img src="/company_logo/9.jfif" alt="logo2" className="w-8 h-8 scale1  " />
                             <div>
                                 <p className="font-medium">Robi Axiata PLC.</p>
                                 <p className="text-[14px] text-clr2 ">3 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://www.aarong.com/bgd/landing-page'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/13.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/13.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Arong</p>
                                 <p className="text-[14px] text-clr2 ">2 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://fieldnation.com/'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/11.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/11.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">Field Nation</p>
                                 <p className="text-[14px] text-clr2 ">2 Jobs</p>
                             </div>
                         </Link>
                         <Link to={'https://www.foodpanda.com.bd/restaurants/new?lng=90.414964&lat=23.803782&vertical=restaurants'} target='_blank' className="flex items-center gap-3 cursor-pointer">
-                            <img src="company_logo/12.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
+                            <img src="/company_logo/12.jfif" alt="logo2" className="w-8 h-8 scale1 shadow2 " />
                             <div>
                                 <p className="font-medium">foodpanda</p>
                                 <p className="text-[14px] text-clr2 ">1 Jobs</p>
