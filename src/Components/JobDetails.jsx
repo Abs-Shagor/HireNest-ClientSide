@@ -5,11 +5,15 @@ import { DataContext } from '../Providers/DataProvider';
 import { CiBookmark } from "react-icons/ci";
 import { CiLocationOn } from "react-icons/ci";
 import { IoShareSocialOutline } from "react-icons/io5";
-
+import Swal from 'sweetalert2'
+import toast from 'daisyui/components/toast';
+import axios from 'axios';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const JobDetails = () => {
     const navigate = useNavigate();
-    const { jobs } = useContext(DataContext);
+    const { jobs, serverDomain } = useContext(DataContext);
+    const { user } = useContext(AuthContext);
 
     // To show the upperside of the page we use the below method
     useEffect(() => {
@@ -21,7 +25,48 @@ const JobDetails = () => {
     const job = jobs?.find(job => job._id == param.jobId);
     // console.log(job)
 
-    
+
+    // Handling Delete operation  |  Login as admin to delete post  |  siddik56u@gmail.com 
+    function handleDelete(id) {
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn bg-red-600 hover:bg-red-700 text-white shadow1 rounded-lg ml-5",
+                cancelButton: "btn rounded-lg"
+            },
+            buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "cancel",
+            reverseButtons: true
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const { data } = await axios.delete(`${serverDomain}jobs/${id}`);
+
+                    if (data.deletedCount > 0) {
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Job post has been deleted.",
+                            icon: "success",
+                            confirmButtonColor: "#3B82F6", // Blue color
+                            confirmButtonText: "OK"
+                        }).then(() => {
+                            navigate('/');
+                            window.location.reload();
+                        });
+                    }
+                } catch (error) {
+                    toast.error("Failed to delete job!");
+                }
+            }
+        });
+    }
+
     return (
         <div>
             <button onClick={() => navigate(-1)} className="flex items-center gap-1 text-[#003D20] font-semibold cursor-pointer mt-10 mb-5"><FaArrowLeft /><p>Back to home</p></button>
@@ -73,7 +118,11 @@ const JobDetails = () => {
                             <p className='whitespace-pre-line text-gray-500 '>{job?.description}</p>
                         </div>
                 }
+                <div className={`${user?.email === 'siddik56u@gmail.com' ? "text-right" : "hidden"} `}>
+                    <button onClick={() => handleDelete(job._id)} className='btn bg-red-600 hover:bg-red-700 text-white  shadow1 rounded-lg mt-10 '>Delete Post</button>
+                </div>
             </div>
+
         </div>
     );
 };

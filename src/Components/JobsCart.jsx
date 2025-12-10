@@ -171,7 +171,7 @@ const JobsCart = () => {
                 </div>
             </div>
 
-            <div className='grid gap-5'>
+            <div className='grid gap-5 '>
                 {
                     jobss.length ?
                         jobss.map(job => {
