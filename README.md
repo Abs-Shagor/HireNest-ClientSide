@@ -1,16 +1,36 @@
-# React + Vite
+## 🏢 HireNest - A Modern Job Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern job portal where recruiters can post vacancies and job seekers can browse, filter, and apply through a
+clean, responsive interface. The platform includes secure user authentication, real-time job posting, and reliable
+image/PDF uploads. It is deployed with a fast backend & database for a smooth, end-to-end hiring experience.
 
-Currently, two official plugins are available:
+📱 Live Demo
+🔗 Live Application: [hirenest-demo.vercel.app](https://hirenest-ac525.web.app/)
+📂 Frontend Code: [HireNest Repository](https://github.com/Abs-Shagor/HireNest-ClientSide)
+⚙️ Backend Code: [GitHub Repository](https://github.com/Abs-Shagor/HireNest-ServerSide)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### **Tech Stack**
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=react,nodejs,express,mongodb,tailwind,firebase,git,github,vercel" />
+</p>
 
-## React Compiler
+**React** • **Node.js** • **Express** • **MongoDB** • **TailwindCSS** • **Firebase** • **Git** • **GitHub** • **Vercel**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🚀 Deployment
+Frontend
+Platform: Vercel
+Status: ✅ Production Ready
 
-## Expanding the ESLint configuration
+Backend
+Platform: Vercel 
+Database: MongoDB Atlas (Cloud)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+File Storage
+Images & PDFs: Cloudinary
+Form Handling: Formspree
+
+Authentication
+Service: Firebase Authentication
+Features: Email/Password, Google OAuth
+
+<img width="1174" height="594" alt="image" src="https://github.com/user-attachments/assets/99e28ac2-e34c-4cd0-ad06-3095ad191b4a" />
