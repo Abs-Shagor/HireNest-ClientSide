@@ -4,9 +4,9 @@ A modern job portal where recruiters can post vacancies and job seekers can brow
 clean, responsive interface. The platform includes secure user authentication, real-time job posting, and reliable
 image/PDF uploads. It is deployed with a fast backend & database for a smooth, end-to-end hiring experience.
 
-🔗 Live: [hirenest-demo.vercel.app](https://hirenest-ac525.web.app/)
-📂 Frontend Code: [HireNest Repository](https://github.com/Abs-Shagor/HireNest-ClientSide)
-⚙️ Backend Code: [GitHub Repository](https://github.com/Abs-Shagor/HireNest-ServerSide)
+- 🔗 Live: [hirenest-demo.vercel.app](https://hirenest-ac525.web.app/)
+- 📂 Frontend Code: [HireNest Repository](https://github.com/Abs-Shagor/HireNest-ClientSide)
+- ⚙️ Backend Code: [GitHub Repository](https://github.com/Abs-Shagor/HireNest-ServerSide)
 
 ### **Tech Stack**
 <img src="https://skillicons.dev/icons?i=react,nodejs,express,mongodb,tailwind,firebase,git,github,vercel" />
